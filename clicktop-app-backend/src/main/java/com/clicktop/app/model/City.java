@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.Data;
 
@@ -18,22 +20,26 @@ import lombok.Data;
  * @author thiag
  */
 @Entity
-@Table(name = "functionality")
+@Table(name = "cities")
 @Data
-public class Functionality {
-    
+public class City {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    
-    @Column(name = "name")
+
+    @Column(name = "name_city")
     private String name;
-    
-    @Column(name = "key_name")
-    private String key;
-    
-    @Column(name = "profile")
-    private Long profile;
-    
+
+    @OneToOne
+    @JoinColumn(name = "stateId")
+    private State state;
+
+    @Column(name = "longitude")
+    private String longitude;
+
+    @Column(name = "latitude")
+    private String latitude;
+
 }

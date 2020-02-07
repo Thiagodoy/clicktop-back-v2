@@ -10,8 +10,15 @@ import com.clicktop.app.model.User;
 import com.clicktop.app.repository.UserRepository;
 import com.clicktop.app.request.UserRequest;
 import com.clicktop.app.response.UserResponse;
+import com.clicktop.app.specification.UserSpecification;
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,7 +29,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class UserService {
 
-    @Autowired
+    @Autowired(required = true)
     private UserRepository repository;
 
     @Autowired
@@ -62,18 +69,37 @@ public class UserService {
         this.repository.save(user);
 
     }
-    
-    
-    
+
     @Transactional(readOnly = true)
-    public List<UserResponse>listBy(Long id, String email, String name,String status){
+    public Page<User> listBy(Long id, String email, String name, String status, Pageable page) {
+
+        
+        
+        List<Specification<User>> predicates = new ArrayList<>();
+        
+        if(Optional.ofNullable(id).isPresent()){
+            predicates.add(UserSpecification.id(id));
+        }
+    
+        
+        if(Optional.ofNullable(email).isPresent()){
+            predicates.add(UserSpecification.email(email));
+        }
+        
+        
+        if(Optional.ofNullable(name).isPresent()){
+            predicates.add(UserSpecification.firstName(name));
+        }
+        
+        if(Optional.ofNullable(status).isPresent()){
+            predicates.add(UserSpecification.status(User.UserStatus.valueOf(status)));
+        }        
+        
+        Specification<User> specification = predicates.stream().reduce(Specification::and).orElse(null);
+        
+        return this.repository.findAll(specification, page);
         
         
         
-        
-        
-        
-        
-        return null;
     }
 }

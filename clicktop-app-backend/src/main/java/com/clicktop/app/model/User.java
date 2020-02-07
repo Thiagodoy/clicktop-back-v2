@@ -27,7 +27,7 @@ import lombok.Data;
  * @author thiag
  */
 @Entity
-@Table
+@Table(name = "user")
 @Data
 public class User {
 

@@ -5,6 +5,7 @@
  */
 package com.clicktop.app.model;
 
+import java.util.Optional;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,22 +19,29 @@ import lombok.Data;
  * @author thiag
  */
 @Entity
-@Table(name = "functionality")
+@Table(name = "plan")
 @Data
-public class Functionality {
-    
+public class Plan {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    
+
     @Column(name = "name")
     private String name;
-    
-    @Column(name = "key_name")
-    private String key;
-    
-    @Column(name = "profile")
-    private Long profile;
-    
+
+    @Column(name = "description")
+    private String description;
+
+    public void update(Plan plan) {
+        if (Optional.ofNullable(plan.getName()).isPresent() && !plan.getName().equals(this.name)) {
+            this.name = plan.getName();
+        }
+
+        if (Optional.ofNullable(plan.getDescription()).isPresent() && !plan.getDescription().equals(this.description)) {
+            this.description = plan.getDescription();
+        }
+    }
+
 }

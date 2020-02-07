@@ -24,9 +24,9 @@ import org.springframework.transaction.PlatformTransactionManager;
  *
  * @author Thiago H. Godoy <thiagodoy@hotmail.com>
  */
-@EnableJpaRepositories(basePackages = {"com.core.behavior.repository"},
-         entityManagerFactoryRef = "behaviorEntityManager", 
-        transactionManagerRef = "behaviorTransactionManager") 
+@EnableJpaRepositories(basePackages = {"com.clicktop.app.repository"},
+         entityManagerFactoryRef = "clickTopEntityManager", 
+        transactionManagerRef = "clickTopTransactionManager") 
 @Configuration
 public class DataBaseConfiguration implements EnvironmentAware {
 
@@ -45,10 +45,10 @@ public class DataBaseConfiguration implements EnvironmentAware {
 
     @Primary
     @Bean
-    public LocalContainerEntityManagerFactoryBean behaviorEntityManager() {
+    public LocalContainerEntityManagerFactoryBean clickTopEntityManager() {
         LocalContainerEntityManagerFactoryBean em
           = new LocalContainerEntityManagerFactoryBean();
-        em.setDataSource(dataSourceBehavior());
+        em.setDataSource(dataSourceClicktop());
         em.setPackagesToScan(
           new String[] { "com.clicktop.app.model", "com.clicktop.app.repository" });
  
@@ -59,8 +59,10 @@ public class DataBaseConfiguration implements EnvironmentAware {
         HashMap<String, Object> properties = new HashMap<>();
         properties.put("hibernate.hbm2ddl.auto",
           environment.getProperty("hibernate.hbm2ddl.auto"));
-        properties.put("hibernate.dialect",
-          "org.hibernate.dialect.MySQL5InnoDBDialect");
+        properties.put("hibernate.dialect","org.hibernate.dialect.MySQL5InnoDBDialect");
+        
+        properties.put("hibernate.hbm2ddl.auto","update");
+        
         em.setJpaPropertyMap(properties);
  
         return em;
@@ -68,7 +70,7 @@ public class DataBaseConfiguration implements EnvironmentAware {
     
     @Primary
     @Bean
-    public DataSource dataSourceBehavior() {
+    public DataSource dataSourceClicktop() {
 
         DataSource dataSource;
         HikariConfig hikariConfig = new HikariConfig();
@@ -94,12 +96,12 @@ public class DataBaseConfiguration implements EnvironmentAware {
     
     @Primary
     @Bean
-    public PlatformTransactionManager behaviorTransactionManager() {
+    public PlatformTransactionManager clickTopTransactionManager() {
   
         JpaTransactionManager transactionManager
           = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(
-          behaviorEntityManager().getObject());
+          clickTopEntityManager().getObject());
         return transactionManager;
     }
 

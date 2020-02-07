@@ -18,22 +18,18 @@ import lombok.Data;
  * @author thiag
  */
 @Entity
-@Table(name = "functionality")
+@Table(name = "states")
 @Data
-public class Functionality {
+public class State {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
     
-    @Column(name = "name")
+    @Column(name = "name_state")
     private String name;
     
-    @Column(name = "key_name")
-    private String key;
-    
-    @Column(name = "profile")
-    private Long profile;
-    
+    @Column(name = "initials")
+    private String initials ;
 }
