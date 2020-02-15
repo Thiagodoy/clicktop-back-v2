@@ -6,9 +6,7 @@
 package com.clicktop.app.resource;
 
 import com.clicktop.app.model.City;
-import com.clicktop.app.model.Plan;
 import com.clicktop.app.service.CityService;
-import com.clicktop.app.service.PlanService;
 import static com.clicktop.app.utils.Url.URL_CITY;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;

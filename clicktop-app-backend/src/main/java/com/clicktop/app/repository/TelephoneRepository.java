@@ -5,19 +5,13 @@
  */
 package com.clicktop.app.repository;
 
-import com.clicktop.app.model.Profile;
-import java.util.List;
+import com.clicktop.app.model.Telephone;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author thiag
  */
-@Repository
-public interface ProfileRepository extends JpaRepository<Profile, Long> {
-    
-    
-    List<Profile> findByNameContaining(String name); 
+public interface TelephoneRepository extends JpaRepository<Telephone, Long> {
     
 }

@@ -8,11 +8,13 @@ package com.clicktop.app.resource;
 import com.clicktop.app.model.User;
 import com.clicktop.app.request.UserRequest;
 import com.clicktop.app.service.UserService;
+import com.clicktop.app.utils.Url;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,22 +29,24 @@ import org.springframework.web.bind.annotation.RestController;
  * @author thiag
  */
 @RestController
-@RequestMapping(value = "/user")
+@RequestMapping(value = Url.URL_USER)
 public class UserResource {
 
     @Autowired
     private UserService service;
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity get(@RequestParam(name = "id", required = false) Long id,
+    public ResponseEntity get(
+            @RequestParam(name = "id", required = false) Long id,
             @RequestParam(name = "email", required = false) String email,
             @RequestParam(name = "name", required = false) String name,
+            @RequestParam(name = "profile", required = false) String profile,
             @RequestParam(name = "page", required = false, defaultValue = "0") int page,
             @RequestParam(name = "size", required = false, defaultValue = "10") int size) {
 
         try {
 
-            Page<User> response = this.service.listBy(id, email, email, name, PageRequest.of(page, size));
+            Page<User> response = this.service.listBy(id, email, name, profile, PageRequest.of(page, size, Sort.by("firstName")));
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             Logger.getLogger(UserResource.class.getName()).log(Level.SEVERE, "[get]", e);

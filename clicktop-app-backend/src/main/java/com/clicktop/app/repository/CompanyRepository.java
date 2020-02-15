@@ -5,8 +5,7 @@
  */
 package com.clicktop.app.repository;
 
-import com.clicktop.app.model.User;
-import java.util.Optional;
+import com.clicktop.app.model.Company;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
@@ -16,9 +15,6 @@ import org.springframework.stereotype.Repository;
  * @author thiag
  */
 @Repository
-public interface UserRepository extends JpaRepository<User, Long>, JpaSpecificationExecutor<User> {
-    
-    Optional<User> findByEmail(String email);
-    
+public interface CompanyRepository extends JpaRepository<Company, Long>, JpaSpecificationExecutor<Company> {
     
 }

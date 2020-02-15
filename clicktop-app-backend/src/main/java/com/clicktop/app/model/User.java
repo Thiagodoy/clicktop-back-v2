@@ -7,6 +7,7 @@ package com.clicktop.app.model;
 
 import com.clicktop.app.request.UserRequest;
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.Optional;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,6 +22,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 /**
  *
@@ -29,7 +33,10 @@ import lombok.Data;
 @Entity
 @Table(name = "user")
 @Data
-public class User {
+@NoArgsConstructor
+public class User implements UserDetails {
+
+   
 
     public enum UserStatus {
         ACTIVE, CANCELED
@@ -94,5 +101,37 @@ public class User {
         }       
         
     }
+    
+    
+     @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+    
 
 }

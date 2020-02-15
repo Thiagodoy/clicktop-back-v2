@@ -38,6 +38,12 @@ public class ProfileService {
     }
     
     @Transactional(readOnly = true)
+    public List<Profile>listByName(String name){
+        return this.repository.findByNameContaining(name);
+    }
+    
+    
+    @Transactional(readOnly = true)
     public List<Profile>listAll(){
         return this.repository.findAll();
     }

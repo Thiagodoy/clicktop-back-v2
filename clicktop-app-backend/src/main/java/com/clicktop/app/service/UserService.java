@@ -71,35 +71,35 @@ public class UserService {
     }
 
     @Transactional(readOnly = true)
-    public Page<User> listBy(Long id, String email, String name, String status, Pageable page) {
+    public Page<User> listBy(Long id, String email, String name, String profile, Pageable page) {
 
-        
-        
         List<Specification<User>> predicates = new ArrayList<>();
-        
-        if(Optional.ofNullable(id).isPresent()){
+
+        if (Optional.ofNullable(id).isPresent()) {
             predicates.add(UserSpecification.id(id));
         }
-    
-        
-        if(Optional.ofNullable(email).isPresent()){
+
+        if (Optional.ofNullable(email).isPresent()) {
             predicates.add(UserSpecification.email(email));
         }
-        
-        
-        if(Optional.ofNullable(name).isPresent()){
+
+        if (Optional.ofNullable(name).isPresent()) {
             predicates.add(UserSpecification.firstName(name));
         }
-        
-        if(Optional.ofNullable(status).isPresent()){
-            predicates.add(UserSpecification.status(User.UserStatus.valueOf(status)));
-        }        
-        
+
+        if (Optional.ofNullable(profile).isPresent()) {
+
+            List<Profile> profiles = profileService.listByName(profile);
+
+            if (!profiles.isEmpty()) {
+                predicates.add(UserSpecification.profile(profiles.get(0)));
+            }
+
+        }
+
         Specification<User> specification = predicates.stream().reduce(Specification::and).orElse(null);
-        
+
         return this.repository.findAll(specification, page);
-        
-        
-        
+
     }
 }

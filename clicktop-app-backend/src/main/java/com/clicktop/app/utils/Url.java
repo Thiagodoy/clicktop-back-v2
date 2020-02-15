@@ -12,9 +12,11 @@ package com.clicktop.app.utils;
 public class Url {
     
     
-    public final static String URL_PLAN = "/plan";
-    public final static String URL_TOUR = "/tourism";
-    public final static String URL_CATEGORY = "/category";
-    public final static String URL_CITY = "/city";
+    public final static String URL_AUTH = "/api/auth";
+    public final static String URL_PLAN = "/api/plan";
+    public final static String URL_TOUR = "/api/tourism";
+    public final static String URL_CATEGORY = "/api/category";
+    public final static String URL_CITY = "/api/city";
+    public final static String URL_USER = "/api/user";
     
 }

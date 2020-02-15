@@ -5,6 +5,7 @@
  */
 package com.clicktop.app.specification;
 
+import com.clicktop.app.model.Profile;
 import com.clicktop.app.model.User;
 import com.clicktop.app.model.User_;
 import org.springframework.data.jpa.domain.Specification;
@@ -27,8 +28,8 @@ public class UserSpecification {
         return (root, criteriaQuery, criteriaBuilder) -> criteriaBuilder.equal(root.get(User_.id), id);
     }
     
-    public static Specification<User> status(User.UserStatus status) {
-        return (root, criteriaQuery, criteriaBuilder) -> criteriaBuilder.equal(root.get(User_.status), status);
+    public static Specification<User> profile(Profile profile) {
+        return (root, criteriaQuery, criteriaBuilder) -> criteriaBuilder.equal(root.get(User_.profile), profile);
     }
 
 }
