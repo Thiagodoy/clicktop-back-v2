@@ -6,8 +6,8 @@
 package com.clicktop.app.resource;
 
 import com.clicktop.app.model.Profile;
-import com.clicktop.app.model.Prospect;
 import com.clicktop.app.service.ProfileService;
+import com.clicktop.app.utils.Url;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author thiag
  */
 @RestController
-@RequestMapping()
+@RequestMapping( value = Url.URL_PROFILE)
 public class ProfileResource {
 
     @Autowired

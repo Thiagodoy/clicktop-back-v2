@@ -5,6 +5,7 @@
  */
 package com.clicktop.app.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
@@ -12,6 +13,7 @@ import lombok.Data;
  * @author thiag
  */
 @Data
+@AllArgsConstructor
 public class PlanStatusDTO {
 
     private String planName;

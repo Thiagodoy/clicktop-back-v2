@@ -5,18 +5,30 @@
  */
 package com.clicktop.app.model;
 
+import com.clicktop.app.dto.PlanStatusDTO;
 import java.util.Optional;
 import javax.persistence.Column;
+import javax.persistence.ColumnResult;
+import javax.persistence.ConstructorResult;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedNativeQuery;
+import javax.persistence.SqlResultSetMapping;
 import javax.persistence.Table;
 import lombok.Data;
 
+@SqlResultSetMapping(name = "status", classes = @ConstructorResult(
+        targetClass = PlanStatusDTO.class,
+        columns = {
+            @ColumnResult(name = "planName", type = String.class),                    
+            @ColumnResult(name = "qtd", type = Long.class)
+        }))
 
-@NamedNativeQuery(name = "Plan.listStatus",query = "")
+@NamedNativeQuery(name = "Plan.listStatus",
+        resultSetMapping = "status",
+        query = "select b.name as planName, count(a.id) as qtd from clicktop.company a inner join clicktop.plan b on a.id_plan = b.id group by b.name")
 
 /**
  *
