@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2020-02-18 11:42:56.647  INFO 16700 --- [main] com.clicktop.app.AppApplication          : Starting AppApplication on DESKTOP-DPPSJT4 with PID 16700 (started by LcDias in C:\Users\LcDias\Desktop\back click\click-top-back-v2\clicktop-app-backend)
 2020-02-18 11:42:56.660  INFO 16700 --- [main] com.clicktop.app.AppApplication          : The following profiles are active: hml
 2020-02-18 11:42:57.730  INFO 16700 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
@@ -45,6 +46,55 @@
 2020-02-18 11:43:04.909  INFO 16700 --- [main] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
 2020-02-18 11:43:04.910  INFO 16700 --- [main] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
 2020-02-18 11:43:04.912  INFO 16700 --- [main] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+=======
+2020-02-17 22:19:38.598  INFO 5264 --- [main] com.clicktop.app.AppApplication          : Starting AppApplication on DESKTOP-NDEB13K with PID 5264 (started by thiag in E:\Documentos\projeto - Tryia\click-top-back-v2\clicktop-app-backend)
+2020-02-17 22:19:38.617  INFO 5264 --- [main] com.clicktop.app.AppApplication          : The following profiles are active: test
+2020-02-17 22:19:39.469  INFO 5264 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-02-17 22:19:39.470  INFO 5264 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-02-17 22:19:39.560  INFO 5264 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 80ms. Found 10 JPA repository interfaces.
+2020-02-17 22:19:39.729  INFO 5264 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-02-17 22:19:39.729  INFO 5264 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2020-02-17 22:19:39.749  INFO 5264 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.clicktop.app.repository.CategoryRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2020-02-17 22:19:39.750  INFO 5264 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.clicktop.app.repository.CityRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2020-02-17 22:19:39.751  INFO 5264 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.clicktop.app.repository.CompanyRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2020-02-17 22:19:39.753  INFO 5264 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.clicktop.app.repository.PlanRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2020-02-17 22:19:39.754  INFO 5264 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.clicktop.app.repository.ProfileRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2020-02-17 22:19:39.755  INFO 5264 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.clicktop.app.repository.ProspectRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2020-02-17 22:19:39.755  INFO 5264 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.clicktop.app.repository.StateRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2020-02-17 22:19:39.755  INFO 5264 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.clicktop.app.repository.TelephoneRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2020-02-17 22:19:39.756  INFO 5264 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.clicktop.app.repository.TourismRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2020-02-17 22:19:39.757  INFO 5264 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.clicktop.app.repository.UserRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2020-02-17 22:19:39.757  INFO 5264 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27ms. Found 0 JDBC repository interfaces.
+2020-02-17 22:19:40.075  INFO 5264 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-02-17 22:19:40.133  INFO 5264 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-02-17 22:19:40.172  INFO 5264 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-02-17 22:19:40.175  INFO 5264 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@64920dc2' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-02-17 22:19:40.179  INFO 5264 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-02-17 22:19:40.182  INFO 5264 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-02-17 22:19:41.116  INFO 5264 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8001 (http)
+2020-02-17 22:19:41.127  INFO 5264 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-02-17 22:19:41.127  INFO 5264 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-02-17 22:19:41.228  INFO 5264 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-02-17 22:19:41.229  INFO 5264 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2549 ms
+2020-02-17 22:19:41.319  INFO 5264 --- [main] com.zaxxer.hikari.HikariDataSource       : ClicktopPool - Starting...
+2020-02-17 22:19:41.352  INFO 5264 --- [main] com.zaxxer.hikari.HikariDataSource       : ClicktopPool - Start completed.
+2020-02-17 22:19:41.352  INFO 5264 --- [main] c.c.a.c.DataBaseConfiguration            : Profile -> test
+2020-02-17 22:19:41.418  INFO 5264 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-02-17 22:19:41.502  INFO 5264 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.10.Final}
+2020-02-17 22:19:41.680  INFO 5264 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-02-17 22:19:42.945  INFO 5264 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2020-02-17 22:19:43.867  INFO 5264 --- [main] org.hibernate.orm.connections.access     : HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@33765d22] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2020-02-17 22:19:46.112  INFO 5264 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-02-17 22:19:46.130  INFO 5264 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-02-17 22:19:46.511  WARN 5264 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-02-17 22:19:47.385  INFO 5264 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4f6a5cc9, org.springframework.security.web.context.SecurityContextPersistenceFilter@293ba26c, org.springframework.security.web.header.HeaderWriterFilter@65dd2191, org.springframework.security.web.authentication.logout.LogoutFilter@20d92f1e, com.clicktop.app.filter.JwtRequestFilter@176e839e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5cff6d1d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@16c1345b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5d24703e, org.springframework.security.web.session.SessionManagementFilter@1f381eaf, org.springframework.security.web.access.ExceptionTranslationFilter@5b53c3c5, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2caa9666]
+2020-02-17 22:19:47.413  INFO 5264 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-02-17 22:19:47.773  INFO 5264 --- [main] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2020-02-17 22:19:47.786  INFO 5264 --- [main] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2020-02-17 22:19:47.786  INFO 5264 --- [main] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2020-02-17 22:19:47.787  INFO 5264 --- [main] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2020-02-17 22:19:47.788  INFO 5264 --- [main] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+>>>>>>> 0eafc19e07b5015e2940e51b49b5889d40acff5b
   Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
   NOT STARTED.
   Currently in standby mode.
@@ -52,6 +102,7 @@
   Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
   Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
 
+<<<<<<< HEAD
 2020-02-18 11:43:04.912  INFO 16700 --- [main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
 2020-02-18 11:43:04.912  INFO 16700 --- [main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
 2020-02-18 11:43:04.912  INFO 16700 --- [main] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@7c9c7e7d
@@ -364,3 +415,36 @@ io.jsonwebtoken.MalformedJwtException: JWT strings must contain exactly 2 period
 2020-02-18 13:32:04.565  WARN 16700 --- [http-nio-8001-exec-10] c.clicktop.app.filter.JwtRequestFilter   : Token não inicia com  Bearer!
 2020-02-18 13:32:04.726  WARN 16700 --- [http-nio-8001-exec-1] c.clicktop.app.filter.JwtRequestFilter   : Token não inicia com  Bearer!
 2020-02-18 13:32:04.728  WARN 16700 --- [http-nio-8001-exec-1] o.s.web.servlet.PageNotFound             : No mapping for OPTIONS /api/profile
+=======
+2020-02-17 22:19:47.788  INFO 5264 --- [main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2020-02-17 22:19:47.788  INFO 5264 --- [main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2020-02-17 22:19:47.788  INFO 5264 --- [main] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@7a3f3bc4
+2020-02-17 22:19:47.821  INFO 5264 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-02-17 22:19:47.840  INFO 5264 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-02-17 22:19:47.880  INFO 5264 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-02-17 22:19:48.026  INFO 5264 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_1
+2020-02-17 22:19:48.030  INFO 5264 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2020-02-17 22:19:48.034  INFO 5264 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_2
+2020-02-17 22:19:48.038  INFO 5264 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: postUsingPOST_1
+2020-02-17 22:19:48.040  INFO 5264 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: putUsingPUT_1
+2020-02-17 22:19:48.043  INFO 5264 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_2
+2020-02-17 22:19:48.047  INFO 5264 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_3
+2020-02-17 22:19:48.051  INFO 5264 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: postUsingPOST_2
+2020-02-17 22:19:48.053  INFO 5264 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: putUsingPUT_2
+2020-02-17 22:19:48.055  INFO 5264 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_3
+2020-02-17 22:19:48.071  INFO 5264 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_4
+2020-02-17 22:19:48.078  INFO 5264 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: postUsingPOST_3
+2020-02-17 22:19:48.080  INFO 5264 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: putUsingPUT_3
+2020-02-17 22:19:48.082  INFO 5264 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_4
+2020-02-17 22:19:48.086  INFO 5264 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_5
+2020-02-17 22:19:48.091  INFO 5264 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: postUsingPOST_4
+2020-02-17 22:19:48.093  INFO 5264 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: putUsingPUT_4
+2020-02-17 22:19:48.095  INFO 5264 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_5
+2020-02-17 22:19:48.097  INFO 5264 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_6
+2020-02-17 22:19:48.100  INFO 5264 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: postUsingPOST_5
+2020-02-17 22:19:48.101  INFO 5264 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: putUsingPUT_5
+2020-02-17 22:19:48.115  INFO 5264 --- [main] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2020-02-17 22:19:48.115  INFO 5264 --- [main] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2020-02-17 22:19:48.155  INFO 5264 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8001 (http) with context path ''
+2020-02-17 22:19:48.157  INFO 5264 --- [main] com.clicktop.app.AppApplication          : Started AppApplication in 10.216 seconds (JVM running for 11.07)
+>>>>>>> 0eafc19e07b5015e2940e51b49b5889d40acff5b

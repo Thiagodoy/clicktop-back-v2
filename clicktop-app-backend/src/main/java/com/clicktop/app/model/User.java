@@ -72,6 +72,12 @@ public class User implements UserDetails {
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
+    
+    @Column(name = "cellphone")
+    private String cellPhone;
+    
+    @Column(name = "tellphone")
+    private String tellPhone;
 
     @PrePersist
     public void generateDate() {
