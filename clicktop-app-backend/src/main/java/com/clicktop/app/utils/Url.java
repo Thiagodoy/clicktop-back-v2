@@ -20,5 +20,6 @@ public class Url {
     public final static String URL_USER = "/api/user";
     public final static String URL_PROFILE = "/api/profile";
     public final static String URL_DASHBOARD = "/api/dashboard";
+    public final static String URL_COMPANY = "/api/company";
     
 }

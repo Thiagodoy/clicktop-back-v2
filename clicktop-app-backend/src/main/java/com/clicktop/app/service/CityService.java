@@ -28,5 +28,10 @@ public class CityService {
     public List<City> findAll() {
         return this.repository.findAll();
     }
+    
+    @Transactional(readOnly = true)
+    public City findById(Long id) throws Exception {
+        return this.repository.findById(id).orElseThrow(() -> new Exception("Nehuma cidade foi encontrada!"));
+    }
 
 }

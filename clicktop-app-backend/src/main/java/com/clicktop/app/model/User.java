@@ -6,6 +6,7 @@
 package com.clicktop.app.model;
 
 import com.clicktop.app.request.UserRequest;
+import com.clicktop.app.utils.Utils;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Optional;
@@ -78,6 +79,10 @@ public class User implements UserDetails {
     
     @Column(name = "tellphone")
     private String tellPhone;
+    
+    @Column(name = "id_company")
+    private Long company;
+        
 
     @PrePersist
     public void generateDate() {
@@ -85,6 +90,13 @@ public class User implements UserDetails {
     }
     
     public User(UserRequest request){
+        
+        this.firstName = request.getFirstName();
+        this.lastName = request.getLastName();
+        this.email = request.getEmail();
+        this.password = Utils.encodePassword(request.getPassword()); 
+        this.cellPhone = request.getCellPhone();
+        this.tellPhone = request.getTellPhone();
         
     }
     
@@ -106,6 +118,15 @@ public class User implements UserDetails {
             this.photo = request.getPhoto();
         }       
         
+    }
+    
+    
+    public static User createUserDefault(){
+        User user = new User();
+        user.setStatus(UserStatus.ACTIVE);
+        user.setPassword(Utils.encodePassword("Clicktop2020"));
+        user.setLastName("");
+        return user;
     }
     
     

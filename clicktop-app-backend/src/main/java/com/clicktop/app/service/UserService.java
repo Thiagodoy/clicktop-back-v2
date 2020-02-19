@@ -36,8 +36,23 @@ public class UserService {
     private ProfileService profileService;
 
     @Transactional
-    public void save(UserRequest request) {
+    public void save(User request) {
+        this.repository.save(request);
+    }
+
+    @Transactional
+    public void save(UserRequest request) throws Exception {
         User user = new User(request);
+
+        Profile profile = profileService
+                .listAll()
+                .stream()
+                .filter(p -> p.getId().equals(3L))
+                .findFirst()
+                .orElseThrow(() -> new Exception("Não foi encontrado nenhum perfil!"));
+
+        user.setProfile(profile);
+
         this.repository.save(user);
     }
 
@@ -67,6 +82,16 @@ public class UserService {
 
         user.setStatus(User.UserStatus.CANCELED);
         this.repository.save(user);
+
+    }
+
+    @Transactional
+    public void delete(String email) throws Exception {
+
+        User user = this.repository
+                .findByEmail(email)
+                .orElseThrow(() -> new Exception("Não foi possivel localizar o usuário!"));
+        this.repository.delete(user);
 
     }
 
