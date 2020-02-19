@@ -5,17 +5,6 @@
  */
 package com.clicktop.app.request;
 
-import com.clicktop.app.model.Profile;
-import com.clicktop.app.model.User;
-import javax.persistence.Column;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import lombok.Data;
 
 /**
@@ -32,5 +21,7 @@ public class UserRequest {
     private String password;
     private String photo;
     private Long profile;
+    private String tellPhone;
+    private String cellPhone;
 
 }
