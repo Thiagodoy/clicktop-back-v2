@@ -79,7 +79,7 @@ public class UserResource {
     @RequestMapping(method = RequestMethod.PUT)
     public ResponseEntity put(@RequestBody UserRequest request) {
         try {
-            this.service.save(request);
+            this.service.update(request);
             return ResponseEntity.ok().build();
         } catch (Exception e) {
             Logger.getLogger(UserResource.class.getName()).log(Level.SEVERE, "[put]", e);

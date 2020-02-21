@@ -9,7 +9,6 @@ import com.clicktop.app.model.Profile;
 import com.clicktop.app.model.User;
 import com.clicktop.app.repository.UserRepository;
 import com.clicktop.app.request.UserRequest;
-import com.clicktop.app.response.UserResponse;
 import com.clicktop.app.specification.UserSpecification;
 
 import java.util.ArrayList;
@@ -66,7 +65,7 @@ public class UserService {
         user.update(request);
 
         if (!request.getProfile().equals(user.getProfile().getId())) {
-            Profile profile = profileService.getById(request.getId());
+            Profile profile = profileService.getById(request.getProfile());
             user.setProfile(profile);
         }
 
@@ -74,15 +73,8 @@ public class UserService {
     }
 
     @Transactional
-    public void delete(Long id) throws Exception {
-
-        User user = this.repository
-                .findById(id)
-                .orElseThrow(() -> new Exception("Não foi possivel localizar o usuário!"));
-
-        user.setStatus(User.UserStatus.CANCELED);
-        this.repository.save(user);
-
+    public void delete(Long id) throws Exception {        
+        this.repository.deleteById(id);
     }
 
     @Transactional

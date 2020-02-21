@@ -35,7 +35,10 @@ public class Profile {
     private Long id;
     
     @Column(name = "name")
-    private String name;    
+    private String name;   
+    
+    @Column(name = "description")
+    private String description; 
     
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "profile")

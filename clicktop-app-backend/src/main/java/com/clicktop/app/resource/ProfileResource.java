@@ -85,6 +85,7 @@ public class ProfileResource {
             return ResponseEntity.status(HttpStatus.resolve(500)).body(e.getMessage());
         }
     }
+    
 
     @RequestMapping(method = RequestMethod.PUT)
     @ApiOperation(value = "Update", notes = "Update status of a c")
