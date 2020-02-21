@@ -118,6 +118,13 @@ public class User implements UserDetails {
             this.photo = request.getPhoto();
         }       
         
+        if(Optional.ofNullable(request.getTellPhone()).isPresent() && !request.getTellPhone().equals(tellPhone)){
+            this.tellPhone = request.getTellPhone();
+        }  
+        
+        if(Optional.ofNullable(request.getPassword()).isPresent() && !request.getPassword().equals(password)){
+            this.password = Utils.encodePassword(request.getPassword());
+        } 
     }
     
     

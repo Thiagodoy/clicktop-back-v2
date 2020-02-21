@@ -29,6 +29,11 @@ public class ProfileService {
     
     @Transactional
     public void save(Profile profile){
+        
+        if(profile.getId() != null){
+            this.repository.deleteById(profile.getId());
+        }
+        
         this.repository.save(profile);
     }
     
