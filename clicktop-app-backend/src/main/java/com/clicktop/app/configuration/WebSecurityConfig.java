@@ -73,6 +73,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers(HttpMethod.OPTIONS, "/**")
                 .permitAll()
+                .antMatchers(HttpMethod.POST,"/api/prospect")
+                .permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()

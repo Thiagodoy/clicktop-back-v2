@@ -7,6 +7,7 @@ package com.clicktop.app.resource;
 
 import com.clicktop.app.model.Prospect;
 import com.clicktop.app.service.ProspectService;
+import com.clicktop.app.utils.Url;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -30,7 +31,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author thiag
  */
 @RestController
-@RequestMapping(value = "/prospect")
+@RequestMapping(value = Url.URL_PROSPECT)
 public class ProspectResource {
 
     @Autowired
@@ -100,7 +101,7 @@ public class ProspectResource {
     })
     public ResponseEntity put(@RequestBody Prospect request) {
         try {
-            this.service.save(request);
+            this.service.update(request);
             return ResponseEntity.ok().build();
         } catch (Exception e) {
             Logger.getLogger(ProspectResource.class.getName()).log(Level.SEVERE, "[put]", e);

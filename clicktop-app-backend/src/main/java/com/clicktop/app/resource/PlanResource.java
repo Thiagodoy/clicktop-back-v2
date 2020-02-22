@@ -94,7 +94,7 @@ public class PlanResource {
     })
     public ResponseEntity put(@RequestBody Plan request) {
         try {
-            this.service.save(request);
+            this.service.update(request);
             return ResponseEntity.ok().build();
         } catch (Exception e) {
             Logger.getLogger(PlanResource.class.getName()).log(Level.SEVERE, "[put]", e);
