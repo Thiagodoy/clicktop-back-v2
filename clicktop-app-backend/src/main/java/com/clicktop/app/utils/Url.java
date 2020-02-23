@@ -21,5 +21,6 @@ public class Url {
     public final static String URL_PROFILE = "/api/profile";
     public final static String URL_DASHBOARD = "/api/dashboard";
     public final static String URL_COMPANY = "/api/company";
+    public final static String URL_PROSPECT = "/api/prospect";
     
 }

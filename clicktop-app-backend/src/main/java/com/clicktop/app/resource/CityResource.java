@@ -19,6 +19,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -39,7 +40,7 @@ public class CityResource {
         @ApiResponse(response = City.class, code = 200, message = "Ok", responseContainer = "List"),
         @ApiResponse(code = 500, message = "Error on Server")
     })
-    public ResponseEntity get() {
+    public ResponseEntity get(@RequestParam(required = false, name = "name")String name) {
 
         try {
 

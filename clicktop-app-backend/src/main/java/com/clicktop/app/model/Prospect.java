@@ -5,6 +5,7 @@
  */
 package com.clicktop.app.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.time.LocalDateTime;
 import java.util.Optional;
 import javax.persistence.Column;
@@ -61,6 +62,7 @@ public class Prospect {
     @Column(name = "status")
     private ProspectStatus status;
     
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", shape = JsonFormat.Shape.STRING)
     @Column(name = "created_at")
     private LocalDateTime createdAt;
     
