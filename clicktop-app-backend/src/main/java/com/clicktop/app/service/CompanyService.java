@@ -5,6 +5,7 @@
  */
 package com.clicktop.app.service;
 
+import com.clicktop.app.model.Category;
 import com.clicktop.app.model.City;
 import com.clicktop.app.model.Company;
 import com.clicktop.app.model.Plan;
@@ -106,7 +107,7 @@ public class CompanyService {
     }
 
     @Transactional(readOnly = true)
-    public Page<Company> list(String name, String email, Long spotlight, Long planId, String type, Pageable page) throws Exception {
+    public Page<Company> list(String name, String email, Long spotlight, Long planId, String type,Long category, Pageable page) throws Exception {
 
         List<Specification<Company>> predicatives = new ArrayList<>();
 
@@ -126,6 +127,15 @@ public class CompanyService {
             Company.CompanyType tt = Company.CompanyType.valueOf(type);
             predicatives.add(CompanySpecification.type(tt));
         }
+        
+        
+        if (Optional.ofNullable(category).isPresent()) {            
+            Category c = new Category();
+            c.setId(category);
+            predicatives.add(CompanySpecification.category(c));
+        }
+        
+        
 
         if (Optional.ofNullable(planId).isPresent()) {
             Plan plan = planService.findAll().stream().filter(p -> p.getId().equals(planId)).findFirst().orElseThrow(() -> new Exception("Plano não encontrado!"));
@@ -134,7 +144,7 @@ public class CompanyService {
 
         Specification<Company> specification = predicatives.stream().reduce(Specification::and).orElse(null);
 
-        return this.repository.findAll(specification, page);
+        return this.repository.findAll(specification,page);
 
     }
 

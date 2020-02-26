@@ -5,9 +5,12 @@
  */
 package com.clicktop.app.service;
 
+import com.clicktop.app.dto.PostStatusDTO;
 import com.clicktop.app.model.Post;
 import com.clicktop.app.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,6 +36,26 @@ public class PostService {
         post.update(request);
 
         this.repository.save(post);
+    }
+
+    @Transactional(readOnly = true)
+    public PostStatusDTO status() {
+        return this.repository.status();
+    }
+    
+    @Transactional(readOnly = true)
+    public PostStatusDTO statusByCompany(Long company) {
+        return this.repository.status();
+    }
+    
+    @Transactional(readOnly = true)
+    public Page list(Long company,String status,Pageable page){
+        
+        
+        return null;
+        
+        
+        
     }
 
 }

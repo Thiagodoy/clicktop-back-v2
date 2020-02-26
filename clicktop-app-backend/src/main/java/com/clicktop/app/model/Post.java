@@ -5,16 +5,21 @@
  */
 package com.clicktop.app.model;
 
+import com.clicktop.app.dto.PostStatusDTO;
 import java.time.LocalDateTime;
 import java.util.Optional;
 import javax.persistence.Column;
+import javax.persistence.ColumnResult;
+import javax.persistence.ConstructorResult;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.PrePersist;
+import javax.persistence.SqlResultSetMapping;
 import javax.persistence.Table;
 import lombok.Data;
 
@@ -22,8 +27,29 @@ import lombok.Data;
  *
  * @author thiag
  */
+
+
+@SqlResultSetMapping(name = "PostStatus", classes = @ConstructorResult(
+        targetClass = PostStatusDTO.class,
+        columns = {                              
+            @ColumnResult(name = "SCHEDULED", type = Long.class),
+            @ColumnResult(name = "PENDING", type = Long.class),
+            @ColumnResult(name = "APPROVED", type = Long.class),
+            @ColumnResult(name = "DISAPPROVED", type = Long.class),
+            @ColumnResult(name = "PUBLISHED", type = Long.class)
+        }))
+
+
+@NamedNativeQuery(query = "select \n"
+        + "(select count(1) from post p where p.status = 'SCHEDULED') as SCHEDULED,\n"
+        + "(select count(1) from post p where p.status = 'PENDING') as PENDING,\n"
+        + "(select count(1) from post p where p.status = 'APPROVED') as APPROVED,\n"
+        + "(select count(1)  from post p where p.status = 'DISAPPROVED') as DISAPPROVED,\n"
+        + "(select count(1)  from post p where p.status = 'PUBLISHED') as PUBLISHED", 
+        resultSetMapping = "PostStatus", name = "Post.status")
+
 @Entity
-@Table
+@Table(name = "post")
 @Data
 public class Post {
 
