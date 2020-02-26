@@ -42,6 +42,7 @@ public class CompanyResource {
             @RequestParam(required = false, name = "email") String email,
             @RequestParam(required = false, name = "planId") Long planId,
             @RequestParam(required = false, name = "spotlight") Long spotlight,
+            @RequestParam(required = false, name = "category")Long category,
             @RequestParam(required = false, name = "type") String type,
             @RequestParam(required = false, name = "page", defaultValue = "0") int page,
             @RequestParam(required = false, name = "size", defaultValue = "10") int size) {
@@ -51,7 +52,7 @@ public class CompanyResource {
                 Company response = this.service.findById(id);
                 return ResponseEntity.ok(response);
             } else {
-                Page<Company> response = this.service.list(name, email, spotlight, planId, type, PageRequest.of(page, size, Sort.by("name").ascending()));
+                Page<Company> response = this.service.list(name, email, spotlight, planId, type, category, PageRequest.of(page, size));
                 return ResponseEntity.ok(response);
             }
 

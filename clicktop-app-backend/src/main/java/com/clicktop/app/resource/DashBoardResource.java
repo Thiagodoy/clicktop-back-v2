@@ -6,6 +6,7 @@
 package com.clicktop.app.resource;
 
 import com.clicktop.app.dto.PlanStatusDTO;
+import com.clicktop.app.dto.PostStatusDTO;
 import com.clicktop.app.service.DashBoardService;
 import com.clicktop.app.utils.Url;
 import java.util.List;
@@ -35,7 +36,18 @@ public class DashBoardResource {
             List<PlanStatusDTO> response = this.service.listStatusPlan();
             return ResponseEntity.ok(response);
         } catch (Exception e) {
-            Logger.getLogger(DashBoardResource.class.getName()).log(Level.SEVERE, "[]", e);
+            Logger.getLogger(DashBoardResource.class.getName()).log(Level.SEVERE, "[getInformationAboutPlan]", e);
+            return ResponseEntity.status(HttpStatus.resolve(500)).body(e.getMessage());
+        }
+    }
+    
+    @RequestMapping(value = "/postStatus", method = RequestMethod.GET)
+    public ResponseEntity postStatus() {
+        try {
+            PostStatusDTO response = this.service.getPostStatus();
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            Logger.getLogger(DashBoardResource.class.getName()).log(Level.SEVERE, "[postStatus]", e);
             return ResponseEntity.status(HttpStatus.resolve(500)).body(e.getMessage());
         }
     }
