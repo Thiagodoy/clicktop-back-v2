@@ -31,4 +31,8 @@ public class CompanySpecification {
     public static Specification<Company> spotLight(Long spotlight) {
         return (root, criteriaQuery, criteriaBuilder) -> criteriaBuilder.equal(root.get(Company_.spotlight), spotlight);
     }
+    
+     public static Specification<Company> type(Company.CompanyType type) {
+        return (root, criteriaQuery, criteriaBuilder) -> criteriaBuilder.equal(root.get(Company_.type), type);
+    }
 }
