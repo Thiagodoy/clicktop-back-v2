@@ -14,6 +14,7 @@ package com.clicktop.app.configuration;
 import com.clicktop.app.filter.JwtRequestFilter;
 import com.clicktop.app.service.AuthService;
 import com.clicktop.app.utils.JwtAuthenticationEntryPoint;
+import com.clicktop.app.utils.Url;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -74,6 +75,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.OPTIONS, "/**")
                 .permitAll()
                 .antMatchers(HttpMethod.POST,"/api/prospect")
+                .permitAll()
+                .antMatchers(HttpMethod.GET,Url.URL_COMPANY)
                 .permitAll()
                 .anyRequest()
                 .authenticated()

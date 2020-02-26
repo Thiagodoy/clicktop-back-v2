@@ -106,7 +106,7 @@ public class CompanyService {
     }
 
     @Transactional(readOnly = true)
-    public Page<Company> list(String name, String email, Long spotlight, Long planId, Pageable page) throws Exception {
+    public Page<Company> list(String name, String email, Long spotlight, Long planId, String type, Pageable page) throws Exception {
 
         List<Specification<Company>> predicatives = new ArrayList<>();
 
@@ -120,6 +120,11 @@ public class CompanyService {
 
         if (Optional.ofNullable(spotlight).isPresent()) {
             predicatives.add(CompanySpecification.spotLight(spotlight));
+        }
+        
+        if (Optional.ofNullable(type).isPresent()) {
+            Company.CompanyType tt = Company.CompanyType.valueOf(type);
+            predicatives.add(CompanySpecification.type(tt));
         }
 
         if (Optional.ofNullable(planId).isPresent()) {

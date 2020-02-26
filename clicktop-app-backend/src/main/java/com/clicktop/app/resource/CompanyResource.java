@@ -42,15 +42,16 @@ public class CompanyResource {
             @RequestParam(required = false, name = "email") String email,
             @RequestParam(required = false, name = "planId") Long planId,
             @RequestParam(required = false, name = "spotlight") Long spotlight,
+            @RequestParam(required = false, name = "type") String type,
             @RequestParam(required = false, name = "page", defaultValue = "0") int page,
-            @RequestParam(required = false, name = "size", defaultValue = "0") int size) {
+            @RequestParam(required = false, name = "size", defaultValue = "10") int size) {
         try {
 
             if (id != null) {
                 Company response = this.service.findById(id);
                 return ResponseEntity.ok(response);
             } else {
-                Page<Company> response = this.service.list(name, email, spotlight, planId, PageRequest.of(page, size, Sort.by("name").ascending()));
+                Page<Company> response = this.service.list(name, email, spotlight, planId, type, PageRequest.of(page, size, Sort.by("name").ascending()));
                 return ResponseEntity.ok(response);
             }
 
@@ -71,7 +72,7 @@ public class CompanyResource {
             return ResponseEntity.status(HttpStatus.resolve(500)).body(e.getMessage());
         }
     }
-    
+
     @RequestMapping(method = RequestMethod.PUT)
     public ResponseEntity put(@RequestBody Company request) {
         try {
@@ -82,7 +83,7 @@ public class CompanyResource {
             return ResponseEntity.status(HttpStatus.resolve(500)).body(e.getMessage());
         }
     }
-    
+
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity delete(@PathVariable(name = "id") Long id) {
         try {
