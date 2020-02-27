@@ -25,6 +25,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedNativeQuery;
 import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.SqlResultSetMapping;
 import javax.persistence.Table;
 import lombok.Data;
@@ -119,7 +120,20 @@ public class Post {
 
     @PrePersist
     public void generateDate() {
+        
+        if(status.equals(PostStatus.PUBLISHED)){
+            this.publishedTime = LocalDateTime.now();
+        }
+        
         this.createdTime = LocalDateTime.now();
+    }
+    
+    
+    @PreUpdate
+    public void upadate(){
+        if(status.equals(PostStatus.PUBLISHED)){
+            this.publishedTime = LocalDateTime.now();
+        }
     }
 
     public void update(Post post) {
