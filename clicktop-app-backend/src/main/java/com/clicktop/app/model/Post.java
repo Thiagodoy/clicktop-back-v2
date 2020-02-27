@@ -6,7 +6,13 @@
 package com.clicktop.app.model;
 
 import com.clicktop.app.dto.PostStatusDTO;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import javax.persistence.Column;
 import javax.persistence.ColumnResult;
@@ -22,31 +28,41 @@ import javax.persistence.PrePersist;
 import javax.persistence.SqlResultSetMapping;
 import javax.persistence.Table;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
  * @author thiag
  */
-
-
 @SqlResultSetMapping(name = "PostStatus", classes = @ConstructorResult(
         targetClass = PostStatusDTO.class,
-        columns = {                              
-            @ColumnResult(name = "SCHEDULED", type = Long.class),
-            @ColumnResult(name = "PENDING", type = Long.class),
-            @ColumnResult(name = "APPROVED", type = Long.class),
-            @ColumnResult(name = "DISAPPROVED", type = Long.class),
+        columns = {
+            @ColumnResult(name = "SCHEDULED", type = Long.class)
+            ,
+            @ColumnResult(name = "PENDING", type = Long.class)
+            ,
+            @ColumnResult(name = "APPROVED", type = Long.class)
+            ,
+            @ColumnResult(name = "DISAPPROVED", type = Long.class)
+            ,
             @ColumnResult(name = "PUBLISHED", type = Long.class)
         }))
-
 
 @NamedNativeQuery(query = "select \n"
         + "(select count(1) from post p where p.status = 'SCHEDULED') as SCHEDULED,\n"
         + "(select count(1) from post p where p.status = 'PENDING') as PENDING,\n"
         + "(select count(1) from post p where p.status = 'APPROVED') as APPROVED,\n"
         + "(select count(1)  from post p where p.status = 'DISAPPROVED') as DISAPPROVED,\n"
-        + "(select count(1)  from post p where p.status = 'PUBLISHED') as PUBLISHED", 
+        + "(select count(1)  from post p where p.status = 'PUBLISHED') as PUBLISHED",
         resultSetMapping = "PostStatus", name = "Post.status")
+
+@NamedNativeQuery(query = "select \n"
+        + "(select count(1) from post p where p.status = 'SCHEDULED' and p.company = :company) as SCHEDULED,\n"
+        + "(select count(1) from post p where p.status = 'PENDING' and p.company = :company) as PENDING,\n"
+        + "(select count(1) from post p where p.status = 'APPROVED' and p.company = :company) as APPROVED,\n"
+        + "(select count(1)  from post p where p.status = 'DISAPPROVED' and p.company = :company) as DISAPPROVED,\n"
+        + "(select count(1)  from post p where p.status = 'PUBLISHED' and p.company = :company) as PUBLISHED",
+        resultSetMapping = "PostStatus", name = "Post.statusByCompany")
 
 @Entity
 @Table(name = "post")
@@ -72,6 +88,8 @@ public class Post {
     @Column(name = "status")
     private PostStatus status;
 
+    
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     @Column(name = "scheduled_time")
     private LocalDateTime scheduleTime;
 
