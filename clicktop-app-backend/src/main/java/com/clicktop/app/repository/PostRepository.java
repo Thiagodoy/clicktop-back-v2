@@ -7,6 +7,8 @@ package com.clicktop.app.repository;
 
 import com.clicktop.app.dto.PostStatusDTO;
 import com.clicktop.app.model.Post;
+import java.time.LocalDate;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
@@ -24,4 +26,8 @@ public interface PostRepository extends JpaRepository<Post, Long>, JpaSpecificat
     PostStatusDTO status();
     @Query(nativeQuery = true)
     PostStatusDTO statusByCompany(@Param("company")Long company);
+    
+    
+    @Query(value = "select * from post where status = 'SCHEDULED' and scheduled_time <= :date", nativeQuery = true)
+    List<Post>listPostScheduled(@Param("date")LocalDate date);
 }

@@ -6,13 +6,10 @@
 package com.clicktop.app.service;
 
 import com.clicktop.app.dto.PostStatusDTO;
-import com.clicktop.app.model.Category;
-import com.clicktop.app.model.Company;
-import com.clicktop.app.model.Plan;
 import com.clicktop.app.model.Post;
 import com.clicktop.app.repository.PostRepository;
-import com.clicktop.app.specification.CompanySpecification;
 import com.clicktop.app.specification.PostSpecification;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -80,6 +77,11 @@ public class PostService {
         Specification<Post> specification = predicatives.stream().reduce(Specification::and).orElse(null);
         
         return this.repository.findAll(specification, page);
+    }
+    
+    @Transactional(readOnly = true)
+    public List<Post> getPostScheduled(){
+        return this.repository.listPostScheduled(LocalDate.now());
     }
 
 }
