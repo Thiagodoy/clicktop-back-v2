@@ -88,7 +88,6 @@ public class Post {
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private PostStatus status;
-
     
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     @Column(name = "scheduled_time")
@@ -102,6 +101,9 @@ public class Post {
 
     @Column(name = "company", nullable = false)
     private Long company;
+    
+    @Column(name = "categoria", nullable = false)
+    private Long categoria;    
 
     @Column(name = "photo")
     private String photo;

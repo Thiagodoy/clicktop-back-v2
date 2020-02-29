@@ -7,6 +7,7 @@ package com.clicktop.app.service;
 
 import com.clicktop.app.dto.PlanStatusDTO;
 import com.clicktop.app.dto.PostStatusDTO;
+import com.clicktop.app.repository.CompanyRepository;
 import com.clicktop.app.repository.PlanRepository;
 import com.clicktop.app.repository.PostRepository;
 import java.util.List;
@@ -27,6 +28,9 @@ public class DashBoardService {
     @Autowired
     private PostRepository postRepository;
     
+    @Autowired
+    private CompanyRepository companyRepository;
+    
     
     public List<PlanStatusDTO> listStatusPlan(){
         return this.planRepository.listStatus();
@@ -36,5 +40,8 @@ public class DashBoardService {
         return postRepository.status();
     }
     
+    public Long countSpotlight(){
+        return this.companyRepository.countSpotlight();
+    }
     
 }

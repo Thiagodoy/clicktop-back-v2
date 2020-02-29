@@ -11,8 +11,13 @@ import com.clicktop.app.repository.UserRepository;
 import com.clicktop.app.request.UserRequest;
 import com.clicktop.app.specification.UserSpecification;
 
+import static com.clicktop.app.utils.Constants.*;
+import java.text.MessageFormat;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -33,6 +38,9 @@ public class UserService {
 
     @Autowired
     private ProfileService profileService;
+    
+    @Autowired
+    private EmailService emailService;
 
     @Transactional
     public void save(User request) {
@@ -41,18 +49,36 @@ public class UserService {
 
     @Transactional
     public void save(UserRequest request) throws Exception {
+        
+        
+        
+        boolean exists = this.repository.findByEmail(request.getEmail()).isPresent();
+        
+        if(exists){
+            throw new Exception("Já esse email : " + request.getEmail() + " cadastrado em nossa base!");
+        }
+        
+        Map<String,String>paramenters = new HashMap<>();
+        paramenters.put(EMAIL_SUBJECT_KEY, "Primeiro Acesso");
+        paramenters.put(EMAIL_MESSAGE_KEY, MessageFormat.format(EMAIL_FIRST_ACCESS_CONTENT, request.getFirstName(),request.getEmail(),request.getPassword()));
+        
+        
+        
+        
         User user = new User(request);
 
         Profile profile = profileService
                 .listAll()
                 .stream()
-                .filter(p -> p.getId().equals(3L))
+                .filter(p -> p.getId().equals(request.getProfile()))
                 .findFirst()
                 .orElseThrow(() -> new Exception("Não foi encontrado nenhum perfil!"));
 
         user.setProfile(profile);
 
         this.repository.save(user);
+        
+        this.emailService.sendEmail(request.getEmail(), paramenters);
     }
 
     @Transactional
