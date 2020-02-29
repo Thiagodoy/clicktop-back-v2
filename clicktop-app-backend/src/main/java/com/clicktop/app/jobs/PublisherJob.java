@@ -25,7 +25,7 @@ public class PublisherJob {
     @Autowired
     private PostService postService;
 
-    @Scheduled(fixedRate = MINUTES * 5)
+    @Scheduled(fixedDelay  = MINUTES * 5)
     public void publish() {
 
         try {

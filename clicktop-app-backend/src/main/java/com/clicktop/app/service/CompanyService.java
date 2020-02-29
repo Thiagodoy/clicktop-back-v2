@@ -140,8 +140,33 @@ public class CompanyService {
     }
 
     @Transactional(readOnly = true)
+    public Page<Company> listLastCompanys(Pageable page) throws Exception {
+        return this.repository.findAll(page);
+    }
+
+    @Transactional(readOnly = true)
+    public Page<Company> listSpotLightCompanys(Pageable page) throws Exception {
+
+        List<Specification<Company>> predicatives = new ArrayList<>();
+
+        predicatives.add(CompanySpecification.spotLight(1L));
+
+        Specification<Company> specification = predicatives.stream().reduce(Specification::and).orElse(null);
+
+        return this.repository.findAll(specification, page);
+
+    }
+
+    @Transactional(readOnly = true)
     public Company findById(Long id) throws Exception {
         return this.repository.findById(id).orElseThrow(() -> new Exception("Nenhuma empresa foi encontrada!"));
     }
+    
+    
+     @Transactional(readOnly = true)
+    public Page<Company> findByConsult(User user, Pageable page) throws Exception {
+        return this.repository.findByConsultant(user, page);
+    }
+    
 
 }

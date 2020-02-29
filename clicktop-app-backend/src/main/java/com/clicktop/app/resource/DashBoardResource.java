@@ -51,5 +51,16 @@ public class DashBoardResource {
             return ResponseEntity.status(HttpStatus.resolve(500)).body(e.getMessage());
         }
     }
+    
+    @RequestMapping(value = "/spotlight", method = RequestMethod.GET)
+    public ResponseEntity spotlight() {
+        try {
+            Long response = this.service.countSpotlight();
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            Logger.getLogger(DashBoardResource.class.getName()).log(Level.SEVERE, "[postStatus]", e);
+            return ResponseEntity.status(HttpStatus.resolve(500)).body(e.getMessage());
+        }
+    }
 
 }

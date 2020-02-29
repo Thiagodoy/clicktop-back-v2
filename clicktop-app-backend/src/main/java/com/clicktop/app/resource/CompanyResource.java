@@ -6,9 +6,11 @@
 package com.clicktop.app.resource;
 
 import com.clicktop.app.model.Company;
+import com.clicktop.app.model.User;
 import com.clicktop.app.service.CompanyService;
 import com.clicktop.app.utils.Url;
 import io.swagger.annotations.ApiOperation;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,11 +45,27 @@ public class CompanyResource {
             @RequestParam(required = false, name = "email") String email,
             @RequestParam(required = false, name = "planId") Long planId,
             @RequestParam(required = false, name = "spotlight") Long spotlight,
-            @RequestParam(required = false, name = "category")Long category,
+            @RequestParam(required = false, name = "category") Long category,
             @RequestParam(required = false, name = "type") String type,
             @RequestParam(required = false, name = "page", defaultValue = "0") int page,
-            @RequestParam(required = false, name = "size", defaultValue = "10") int size) {
+            @RequestParam(required = false, name = "size", defaultValue = "10") int size,
+            UsernamePasswordAuthenticationToken principal) {
         try {
+
+            if (Optional.ofNullable(principal).isPresent()) {
+
+                User user = (User) principal.getPrincipal();
+
+                //Profile equal COMPANY
+                if (user.getProfile().getId().equals(3L)) {
+                    Company response = this.service.findById(user.getCompany());
+                    return ResponseEntity.ok(response);
+                }else if (user.getProfile().getId().equals(2L)) { //Profile Consult
+                    Page<Company> response = this.service.findByConsult(user, PageRequest.of(page, size));
+                    return ResponseEntity.ok(response);
+                }
+
+            }
 
             if (id != null) {
                 Company response = this.service.findById(id);
@@ -55,6 +74,38 @@ public class CompanyResource {
                 Page<Company> response = this.service.list(name, email, spotlight, planId, type, category, PageRequest.of(page, size));
                 return ResponseEntity.ok(response);
             }
+
+        } catch (Exception e) {
+            Logger.getLogger(CompanyResource.class.getName()).log(Level.SEVERE, "[get]", e);
+            return ResponseEntity.status(HttpStatus.resolve(500)).body(e.getMessage());
+
+        }
+    }
+
+    @RequestMapping(value = "/last-companys", method = RequestMethod.GET)
+    @ApiOperation(response = Company.class, responseContainer = "List", value = "")
+    public ResponseEntity getLastCompanys(
+            @RequestParam(required = false, name = "page", defaultValue = "0") int page,
+            @RequestParam(required = false, name = "size", defaultValue = "10") int size) {
+        try {
+            Page response = this.service.listLastCompanys(PageRequest.of(page, size, Sort.by("createAt").descending()));
+            return ResponseEntity.ok(response);
+
+        } catch (Exception e) {
+            Logger.getLogger(CompanyResource.class.getName()).log(Level.SEVERE, "[get]", e);
+            return ResponseEntity.status(HttpStatus.resolve(500)).body(e.getMessage());
+
+        }
+    }
+
+    @RequestMapping(value = "/spotlight-companys", method = RequestMethod.GET)
+    @ApiOperation(response = Company.class, responseContainer = "List", value = "")
+    public ResponseEntity getSpotlightCompanys(
+            @RequestParam(required = false, name = "page", defaultValue = "0") int page,
+            @RequestParam(required = false, name = "size", defaultValue = "10") int size) {
+        try {
+            Page response = this.service.listSpotLightCompanys(PageRequest.of(page, size, Sort.by("createAt").descending()));
+            return ResponseEntity.ok(response);
 
         } catch (Exception e) {
             Logger.getLogger(CompanyResource.class.getName()).log(Level.SEVERE, "[get]", e);
