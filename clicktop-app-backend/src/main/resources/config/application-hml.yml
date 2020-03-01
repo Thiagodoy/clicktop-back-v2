@@ -35,4 +35,8 @@ email:
     protocol: smtps
     starttls:
            enable: true
+<<<<<<< HEAD
+           required: true   
+=======
            required: true  
+>>>>>>> 8d4d4a64bc949ba5d954b1d67c6d01b7ddb3b8b7
