@@ -87,9 +87,11 @@ public class Post {
     @Column(name = "scheduled_time")
     private LocalDateTime scheduleTime;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     @Column(name = "published_time")
     private LocalDateTime publishedTime;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     @Column(name = "created_time")
     private LocalDateTime createdTime;
 

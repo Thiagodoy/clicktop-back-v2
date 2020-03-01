@@ -302,3 +302,109 @@
 2020-03-01 14:27:26.094  INFO 4296 --- [main] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
 2020-03-01 14:27:26.134  INFO 4296 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8001 (http) with context path ''
 2020-03-01 14:27:26.137  INFO 4296 --- [main] com.clicktop.app.AppApplication          : Started AppApplication in 8.107 seconds (JVM running for 8.751)
+2020-03-01 15:59:33.759  INFO 4296 --- [http-nio-8001-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-01 15:59:33.760  INFO 4296 --- [http-nio-8001-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-03-01 15:59:33.774  INFO 4296 --- [http-nio-8001-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 14 ms
+2020-03-01 15:59:33.793  WARN 4296 --- [http-nio-8001-exec-2] c.clicktop.app.filter.JwtRequestFilter   : Token não inicia com  Bearer!
+2020-03-01 16:04:07.066  WARN 4296 --- [http-nio-8001-exec-6] c.clicktop.app.filter.JwtRequestFilter   : Token não inicia com  Bearer!
+2020-03-01 16:04:22.545  INFO 24332 --- [main] com.clicktop.app.AppApplication          : Starting AppApplication on DESKTOP-NDEB13K with PID 24332 (started by thiag in E:\Documentos\projeto - Tryia\click-top-back-v2\clicktop-app-backend)
+2020-03-01 16:04:22.548  INFO 24332 --- [main] com.clicktop.app.AppApplication          : The following profiles are active: test
+2020-03-01 16:04:23.310  INFO 24332 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-03-01 16:04:23.310  INFO 24332 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-03-01 16:04:23.398  INFO 24332 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 78ms. Found 11 JPA repository interfaces.
+2020-03-01 16:04:23.559  INFO 24332 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-03-01 16:04:23.559  INFO 24332 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2020-03-01 16:04:23.581  INFO 24332 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.clicktop.app.repository.CategoryRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2020-03-01 16:04:23.581  INFO 24332 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.clicktop.app.repository.CityRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2020-03-01 16:04:23.582  INFO 24332 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.clicktop.app.repository.CompanyRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2020-03-01 16:04:23.585  INFO 24332 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.clicktop.app.repository.PlanRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2020-03-01 16:04:23.587  INFO 24332 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.clicktop.app.repository.PostRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2020-03-01 16:04:23.587  INFO 24332 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.clicktop.app.repository.ProfileRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2020-03-01 16:04:23.588  INFO 24332 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.clicktop.app.repository.ProspectRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2020-03-01 16:04:23.589  INFO 24332 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.clicktop.app.repository.StateRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2020-03-01 16:04:23.589  INFO 24332 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.clicktop.app.repository.TelephoneRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2020-03-01 16:04:23.589  INFO 24332 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.clicktop.app.repository.TourismRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2020-03-01 16:04:23.590  INFO 24332 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.clicktop.app.repository.UserRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2020-03-01 16:04:23.590  INFO 24332 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 30ms. Found 0 JDBC repository interfaces.
+2020-03-01 16:04:23.918  INFO 24332 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-03-01 16:04:23.948  INFO 24332 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-03-01 16:04:23.952  INFO 24332 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-03-01 16:04:23.954  INFO 24332 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@661d88a' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-03-01 16:04:23.956  INFO 24332 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-03-01 16:04:23.959  INFO 24332 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-03-01 16:04:24.837  INFO 24332 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8001 (http)
+2020-03-01 16:04:24.847  INFO 24332 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-01 16:04:24.848  INFO 24332 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-03-01 16:04:24.948  INFO 24332 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-03-01 16:04:24.948  INFO 24332 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2349 ms
+2020-03-01 16:04:25.028  INFO 24332 --- [main] com.zaxxer.hikari.HikariDataSource       : ClicktopPool - Starting...
+2020-03-01 16:04:25.052  INFO 24332 --- [main] com.zaxxer.hikari.HikariDataSource       : ClicktopPool - Start completed.
+2020-03-01 16:04:25.053  INFO 24332 --- [main] c.c.a.c.DataBaseConfiguration            : Profile -> test
+2020-03-01 16:04:25.110  INFO 24332 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-03-01 16:04:25.173  INFO 24332 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.10.Final}
+2020-03-01 16:04:25.295  INFO 24332 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-03-01 16:04:26.456  INFO 24332 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2020-03-01 16:04:27.292  WARN 24332 --- [main] o.h.metamodel.internal.MetadataContext   : HHH015011: Unable to locate static metamodel field : com.clicktop.app.model.Company_#consultant; this may or may not indicate a problem with the static metamodel
+2020-03-01 16:04:27.321  INFO 24332 --- [main] org.hibernate.orm.connections.access     : HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@7944c323] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2020-03-01 16:04:27.510  INFO 24332 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-03-01 16:04:27.526  INFO 24332 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-03-01 16:04:27.898  WARN 24332 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-03-01 16:04:28.848  INFO 24332 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@21202507, org.springframework.security.web.context.SecurityContextPersistenceFilter@38a61c81, org.springframework.security.web.header.HeaderWriterFilter@2bfa5678, org.springframework.security.web.authentication.logout.LogoutFilter@58d4fe33, com.clicktop.app.filter.JwtRequestFilter@2079fcfc, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1a06ec24, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@44723d95, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@62878d7c, org.springframework.security.web.session.SessionManagementFilter@3891b430, org.springframework.security.web.access.ExceptionTranslationFilter@6158113e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@52bcfd10]
+2020-03-01 16:04:28.888  INFO 24332 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-03-01 16:04:29.266  INFO 24332 --- [main] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2020-03-01 16:04:29.278  INFO 24332 --- [main] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2020-03-01 16:04:29.278  INFO 24332 --- [main] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2020-03-01 16:04:29.279  INFO 24332 --- [main] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2020-03-01 16:04:29.279  INFO 24332 --- [main] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2020-03-01 16:04:29.280  INFO 24332 --- [main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2020-03-01 16:04:29.280  INFO 24332 --- [main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2020-03-01 16:04:29.280  INFO 24332 --- [main] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@53945f9c
+2020-03-01 16:04:29.291  INFO 24332 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2020-03-01 16:04:29.322  INFO 24332 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-03-01 16:04:29.339  INFO 24332 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-03-01 16:04:29.383  INFO 24332 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-03-01 16:04:29.523  INFO 24332 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_1
+2020-03-01 16:04:29.525  INFO 24332 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2020-03-01 16:04:29.564  INFO 24332 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_2
+2020-03-01 16:04:29.588  INFO 24332 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: postUsingPOST_1
+2020-03-01 16:04:29.590  INFO 24332 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: putUsingPUT_1
+2020-03-01 16:04:29.610  INFO 24332 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getLastCompanysUsingGET_1
+2020-03-01 16:04:29.614  INFO 24332 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getSpotlightCompanysUsingGET_1
+2020-03-01 16:04:29.624  INFO 24332 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_2
+2020-03-01 16:04:29.625  INFO 24332 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_3
+2020-03-01 16:04:29.627  INFO 24332 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: postUsingPOST_2
+2020-03-01 16:04:29.629  INFO 24332 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: putUsingPUT_2
+2020-03-01 16:04:29.630  INFO 24332 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_3
+2020-03-01 16:04:29.631  INFO 24332 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_4
+2020-03-01 16:04:29.635  INFO 24332 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: postUsingPOST_3
+2020-03-01 16:04:29.638  INFO 24332 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_4
+2020-03-01 16:04:29.640  INFO 24332 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_5
+2020-03-01 16:04:29.642  INFO 24332 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: postUsingPOST_4
+2020-03-01 16:04:29.643  INFO 24332 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: putUsingPUT_3
+2020-03-01 16:04:29.645  INFO 24332 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_5
+2020-03-01 16:04:29.657  INFO 24332 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_6
+2020-03-01 16:04:29.658  INFO 24332 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: postUsingPOST_5
+2020-03-01 16:04:29.660  INFO 24332 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: putUsingPUT_4
+2020-03-01 16:04:29.661  INFO 24332 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_6
+2020-03-01 16:04:29.663  INFO 24332 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_7
+2020-03-01 16:04:29.667  INFO 24332 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: postUsingPOST_6
+2020-03-01 16:04:29.669  INFO 24332 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: putUsingPUT_5
+2020-03-01 16:04:29.670  INFO 24332 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_7
+2020-03-01 16:04:29.671  INFO 24332 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_8
+2020-03-01 16:04:29.674  INFO 24332 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: postUsingPOST_7
+2020-03-01 16:04:29.675  INFO 24332 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: putUsingPUT_6
+2020-03-01 16:04:29.686  INFO 24332 --- [main] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2020-03-01 16:04:29.686  INFO 24332 --- [main] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2020-03-01 16:04:29.727  INFO 24332 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8001 (http) with context path ''
+2020-03-01 16:04:29.729  INFO 24332 --- [main] com.clicktop.app.AppApplication          : Started AppApplication in 7.662 seconds (JVM running for 8.258)
+2020-03-01 16:06:13.666  INFO 24332 --- [http-nio-8001-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-01 16:06:13.666  INFO 24332 --- [http-nio-8001-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-03-01 16:06:13.679  INFO 24332 --- [http-nio-8001-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 13 ms
+2020-03-01 16:06:13.697  WARN 24332 --- [http-nio-8001-exec-1] c.clicktop.app.filter.JwtRequestFilter   : Token não inicia com  Bearer!
