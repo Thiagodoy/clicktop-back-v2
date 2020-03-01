@@ -11,10 +11,12 @@ import static com.clicktop.app.utils.Url.URL_CITY;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,11 +42,14 @@ public class CityResource {
         @ApiResponse(response = City.class, code = 200, message = "Ok", responseContainer = "List"),
         @ApiResponse(code = 500, message = "Error on Server")
     })
-    public ResponseEntity get(@RequestParam(required = false, name = "name")String name) {
+    public ResponseEntity get(
+            @RequestParam(required = false, name = "name")String name,
+            @RequestParam(required = false, name = "page")int page,
+            @RequestParam(required = false, name = "size")int size) {
 
         try {
 
-            List<City> response = this.service.findAll();
+            Page<City> response = this.service.findAll(name, PageRequest.of(page, size,Sort.by("name")));
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             Logger.getLogger(CityResource.class.getName()).log(Level.SEVERE, "[get]", e);

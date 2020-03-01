@@ -4,6 +4,8 @@ target/
 !**/src/main/**
 !**/src/test/**
 *.log
+*.log*
+nbactions.xml
 
 ### STS ###
 .apt_generated
