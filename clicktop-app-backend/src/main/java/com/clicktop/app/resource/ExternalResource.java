@@ -176,7 +176,7 @@ public class ExternalResource {
     
     
     
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "/tourism", method = RequestMethod.GET)
     @ApiOperation(value = "List", notes = "List all tourism")
     @ApiResponses(value = {
         @ApiResponse(response = Tourism.class, code = 200, message = "Ok", responseContainer = "List")
