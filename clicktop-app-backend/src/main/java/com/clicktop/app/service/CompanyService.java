@@ -13,8 +13,14 @@ import com.clicktop.app.model.Profile;
 import com.clicktop.app.model.User;
 import com.clicktop.app.repository.CompanyRepository;
 import com.clicktop.app.specification.CompanySpecification;
+import static com.clicktop.app.utils.Constants.EMAIL_FIRST_ACCESS_CONTENT;
+import static com.clicktop.app.utils.Constants.EMAIL_MESSAGE_KEY;
+import static com.clicktop.app.utils.Constants.EMAIL_SUBJECT_KEY;
+import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -44,6 +50,9 @@ public class CompanyService {
 
     @Autowired
     private CityService cityService;
+    
+    @Autowired
+    private EmailService emailService;
 
     @Transactional
     public void save(Company company) throws Exception {
@@ -68,6 +77,13 @@ public class CompanyService {
                 .orElseThrow(() -> new Exception("Não foi encontrado nenhum perfil!"));
 
         user.setProfile(profile);
+        
+        
+        Map<String,String>paramenters = new HashMap<>();
+        paramenters.put(EMAIL_SUBJECT_KEY, "Primeiro Acesso");
+        paramenters.put(EMAIL_MESSAGE_KEY, MessageFormat.format(EMAIL_FIRST_ACCESS_CONTENT, company.getName(),company.getEmail(),"Clicktop2020"));
+        
+        this.emailService.sendEmail(company.getEmail(), paramenters);
 
         service.save(user);
     }

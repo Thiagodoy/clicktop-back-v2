@@ -9,8 +9,6 @@ package com.clicktop.app.configuration;
  *
  * @author thiag
  */
-
-
 import com.clicktop.app.filter.JwtRequestFilter;
 import com.clicktop.app.service.AuthService;
 import com.clicktop.app.utils.JwtAuthenticationEntryPoint;
@@ -46,10 +44,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-    // configure AuthenticationManager so that it knows from where to load
-    // user for matching credentials
-    // Use BCryptPasswordEncoder
-    auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+        // configure AuthenticationManager so that it knows from where to load
+        // user for matching credentials
+        // Use BCryptPasswordEncoder
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
     @Bean
@@ -67,21 +65,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception {
 
         httpSecurity
-                .csrf()                
+                .csrf()
                 .disable()
                 .authorizeRequests()
-                .antMatchers("/api/auth","/swagger**","/webjars/**", "/swagger-resources/**","/swagger-ui.html**","/v2/api-docs","/csrf", "/")
+                .antMatchers("/api/auth", "/swagger**", "/webjars/**", "/swagger-resources/**", "/swagger-ui.html**", "/v2/api-docs", "/csrf", "/")
                 .permitAll()
                 .antMatchers(HttpMethod.OPTIONS, "/**")
                 .permitAll()
-                .antMatchers(HttpMethod.POST,"/api/prospect")
+                .antMatchers(HttpMethod.GET, Url.URL_EXTERNAL + "/**")
                 .permitAll()
-//                .antMatchers(HttpMethod.GET,Url.URL_COMPANY + "/**")
-//                .permitAll()
-                .antMatchers(HttpMethod.GET,Url.URL_CATEGORY + "/**")
+                .antMatchers(HttpMethod.POST, Url.URL_EXTERNAL + "/**")
                 .permitAll()
-//                .antMatchers(HttpMethod.POST,Url.URL_COMPANY + "/**")
-//                .permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()

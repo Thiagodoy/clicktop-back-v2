@@ -23,5 +23,6 @@ public class Url {
     public final static String URL_COMPANY = "/api/company";
     public final static String URL_PROSPECT = "/api/prospect";
     public final static String URL_POST = "/api/post";
+    public final static String URL_EXTERNAL = "/api/external";
     
 }

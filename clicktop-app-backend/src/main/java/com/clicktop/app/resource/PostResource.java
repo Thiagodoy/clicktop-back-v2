@@ -38,12 +38,13 @@ public class PostResource {
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity get(@RequestParam(name = "company", required = false) Long company,
             @RequestParam(name = "status", required = false) String status,
+            @RequestParam(name = "search", required = false) String search,
             @RequestParam(name = "page", defaultValue = "0") int page,
             @RequestParam(name = "size", defaultValue = "10") int size) {
 
         try {
 
-            Page<Post> response = this.service.list(company, status, PageRequest.of(page, size, Sort.by("publishedTime").descending()));
+            Page<Post> response = this.service.list(company, status, search, PageRequest.of(page, size, Sort.by("publishedTime").descending()));
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             Logger.getLogger(PostResource.class.getName()).log(Level.SEVERE, "[get]", e);

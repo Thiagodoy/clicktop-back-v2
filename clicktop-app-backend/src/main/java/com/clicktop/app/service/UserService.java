@@ -78,7 +78,11 @@ public class UserService {
 
         this.repository.save(user);
         
-        this.emailService.sendEmail(request.getEmail(), paramenters);
+        if(user.getReceiveEmail().equals(1L)){
+            this.emailService.sendEmail(request.getEmail(), paramenters);
+        }
+        
+        
     }
 
     @Transactional
