@@ -28,6 +28,11 @@ public class CategoryService {
         return this.repository.findAll(page);
     }
 
+    @Transactional(readOnly = true)
+    public List<Category> findAll() {
+        return this.repository.findAll();
+    }
+
     @Transactional
     public void save(Category plan) {
         this.repository.save(plan);
