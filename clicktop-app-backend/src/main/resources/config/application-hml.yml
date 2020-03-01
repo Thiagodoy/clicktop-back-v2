@@ -26,4 +26,13 @@ clicktop:
             port: 3306            
             connectionTestQuery: SELECT 1  
  
-  
+email:
+    host: smtpout.secureserver.net
+    port: 465
+    username: contato@clicktop.app
+    password: Clicktop@2020
+    auth: true  
+    protocol: smtps
+    starttls:
+           enable: true
+           required: true   
