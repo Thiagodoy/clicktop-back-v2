@@ -23,5 +23,6 @@ public class UserRequest {
     private Long profile;
     private String tellPhone;
     private String cellPhone;
+    private Long receiveEmail;
 
 }

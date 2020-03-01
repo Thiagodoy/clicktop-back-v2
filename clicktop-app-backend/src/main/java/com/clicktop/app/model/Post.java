@@ -7,12 +7,7 @@ package com.clicktop.app.model;
 
 import com.clicktop.app.dto.PostStatusDTO;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import javax.persistence.Column;
 import javax.persistence.ColumnResult;
@@ -29,7 +24,6 @@ import javax.persistence.PreUpdate;
 import javax.persistence.SqlResultSetMapping;
 import javax.persistence.Table;
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -101,6 +95,9 @@ public class Post {
 
     @Column(name = "company", nullable = false)
     private Long company;
+    
+    @Column(name = "company_name")
+    private String companyName;
     
     @Column(name = "categoria", nullable = false)
     private Long categoria;    
@@ -174,6 +171,10 @@ public class Post {
 
         if (Optional.ofNullable(post.getKey()).isPresent() && !post.getKey().equals(key)) {
             this.key = post.getKey();
+        }
+        
+        if (Optional.ofNullable(post.getCompanyName()).isPresent() && !post.getCompanyName().equals(companyName)) {
+            this.companyName = post.getCompanyName();
         }
 
     }

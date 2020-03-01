@@ -82,6 +82,9 @@ public class User implements UserDetails {
     
     @Column(name = "id_company")
     private Long company;
+    
+    @Column(name = "receive_email")
+    private Long receiveEmail;
         
 
     @PrePersist
@@ -97,6 +100,7 @@ public class User implements UserDetails {
         this.password = Utils.encodePassword(request.getPassword()); 
         this.cellPhone = request.getCellPhone();
         this.tellPhone = request.getTellPhone();
+        this.receiveEmail = request.getReceiveEmail();
         
     }
     

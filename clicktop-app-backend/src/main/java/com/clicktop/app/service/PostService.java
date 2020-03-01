@@ -11,6 +11,7 @@ import com.clicktop.app.repository.PostRepository;
 import com.clicktop.app.specification.PostSpecification;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,7 +61,7 @@ public class PostService {
     }
 
     @Transactional(readOnly = true)
-    public Page list(Long company, String status, Pageable page) {
+    public Page list(Long company, String status, String search, Pageable page) {
 
         
          List<Specification<Post>> predicatives = new ArrayList<>();
@@ -72,7 +73,22 @@ public class PostService {
         if (Optional.ofNullable(status).isPresent()) {
             Post.PostStatus ps = Post.PostStatus.valueOf(status);
             predicatives.add(PostSpecification.status(ps));
-        }     
+        } 
+        
+         if (Optional.ofNullable(search).isPresent()) {
+            
+             PostSpecification.key(search);
+             PostSpecification.companyName(search);
+             Specification<Post> spec = Arrays
+                     .asList(PostSpecification.key(search),PostSpecification.companyName(search))
+                     .stream()
+                     .reduce(Specification::or)
+                     .orElse(null);
+             
+            predicatives.add(spec);
+        }
+        
+        
 
         Specification<Post> specification = predicatives.stream().reduce(Specification::and).orElse(null);
         
