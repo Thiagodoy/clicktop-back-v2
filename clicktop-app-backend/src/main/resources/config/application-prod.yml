@@ -20,10 +20,19 @@ clicktop:
         autoCommit: false
         initializationFailFast: false        
         sqlserver:
-            dataUrl: jdbc:mysql://localhost:3306/behavior?rewriteBatchedStatements=true&useTimezone=true&serverTimezone=America/Cuiaba&useLegacyDatetimeCode=false         
-            dataSourceUser: root
-            dataSourcePassword: root
+            dataUrl: jdbc:mysql://localhost:3306/clicktop?rewriteBatchedStatements=true&useTimezone=true&serverTimezone=America/Cuiaba&useLegacyDatetimeCode=false         
+            dataSourceUser: clicktop
+            dataSourcePassword: hpuseGun-2pq
             port: 3306            
             connectionTestQuery: SELECT 1  
  
-  
+email:
+    host: smtpout.secureserver.net
+    port: 465
+    username: contato@clicktop.app
+    password: Clicktop@2020
+    auth: true  
+    protocol: smtps
+    starttls:
+           enable: true
+           required: true 
