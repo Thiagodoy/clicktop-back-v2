@@ -11,16 +11,19 @@ import static com.clicktop.app.utils.Url.URL_CATEGORY;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -41,11 +44,12 @@ public class CategoryResource {
         @ApiResponse(response = Category.class, code = 200, message = "Ok", responseContainer = "List"),
         @ApiResponse(code = 500, message = "Error on Server")
     })
-    public ResponseEntity get() {
+    public ResponseEntity get(@RequestParam(name = "page", defaultValue = "0",required = true)int page,
+            @RequestParam(name = "size", defaultValue = "10",required = true)int size) {
 
         try {
 
-            List<Category> response = this.service.findAll();
+            Page<Category> response = this.service.findAll(PageRequest.of(page, size, Sort.by("name")));
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             Logger.getLogger(CategoryResource.class.getName()).log(Level.SEVERE, "[get]", e);
