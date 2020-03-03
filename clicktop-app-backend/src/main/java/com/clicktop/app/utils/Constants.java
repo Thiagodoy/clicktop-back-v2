@@ -18,4 +18,6 @@ public class Constants {
     
     public static final String EMAIL_FIRST_ACCESS_CONTENT = " Olá, {0}.\n\n Seja bem vindo a plataforma da Clicktop. Segue abaixo seus dados de acesso:\n Email : {1}\n Senha : {2}\n\n Sugerimos no seu primeiro acesso realizar a troca da sua senha.";
     
+    public static final String EMAIL_ERROR_GEOLOCATION = " Olá.\n\n A empresa {0} está com o endereço incompleto. Com isso não é possivle carregar a geolocalização.";
+    
 }

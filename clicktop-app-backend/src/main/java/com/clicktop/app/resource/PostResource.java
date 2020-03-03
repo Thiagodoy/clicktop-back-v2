@@ -44,7 +44,7 @@ public class PostResource {
 
         try {
 
-            Page<Post> response = this.service.list(company, status, search, PageRequest.of(page, size, Sort.by("publishedTime").descending()));
+            Page<Post> response = this.service.list(company, status, search,null, PageRequest.of(page, size, Sort.by("publishedTime").descending()));
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             Logger.getLogger(PostResource.class.getName()).log(Level.SEVERE, "[get]", e);

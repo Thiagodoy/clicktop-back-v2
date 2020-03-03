@@ -22,6 +22,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -53,6 +56,10 @@ public class CompanyService {
     
     @Autowired
     private EmailService emailService;
+    
+    
+    @Autowired
+    private GoogleAddressApiService gaas;
 
     @Transactional
     public void save(Company company) throws Exception {
@@ -84,8 +91,21 @@ public class CompanyService {
         paramenters.put(EMAIL_MESSAGE_KEY, MessageFormat.format(EMAIL_FIRST_ACCESS_CONTENT, company.getName(),company.getEmail(),"Clicktop2020"));
         
         this.emailService.sendEmail(company.getEmail(), paramenters);
-
         service.save(user);
+        
+        Thread t = new Thread(()->{
+            
+            try {
+                gaas.getLocation(company1);
+            } catch (MessagingException ex) {
+                Logger.getLogger(CompanyService.class.getName()).log(Level.SEVERE, "[google]", ex);
+            }
+        });
+        
+        t.start();
+        
+        
+        
     }
 
     @Transactional

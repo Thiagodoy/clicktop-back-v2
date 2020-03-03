@@ -6,11 +6,13 @@
 package com.clicktop.app.resource;
 
 import com.clicktop.app.model.Category;
+import com.clicktop.app.model.City;
 import com.clicktop.app.model.Company;
 import com.clicktop.app.model.Post;
 import com.clicktop.app.model.Prospect;
 import com.clicktop.app.model.Tourism;
 import com.clicktop.app.service.CategoryService;
+import com.clicktop.app.service.CityService;
 import com.clicktop.app.service.CompanyService;
 import com.clicktop.app.service.PostService;
 import com.clicktop.app.service.ProspectService;
@@ -19,6 +21,7 @@ import static com.clicktop.app.utils.Url.URL_EXTERNAL;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -56,6 +59,9 @@ public class ExternalResource {
 
     @Autowired
     private TourismService tourismService;
+    
+    @Autowired
+    private CityService cityService;
 
     @RequestMapping(value = "/post", method = RequestMethod.GET)
     @ApiOperation(value = "List", notes = "List all post with a company can have")
@@ -66,11 +72,12 @@ public class ExternalResource {
     })
     public ResponseEntity getPost(@RequestParam(name = "company", required = false) Long company,
             @RequestParam(name = "search", required = false) String search,
+            @RequestParam(name = "category", required = false) Long category,
             @RequestParam(name = "page", defaultValue = "0") int page,
             @RequestParam(name = "size", defaultValue = "10") int size) {
 
         try {
-            Page<Post> response = this.postService.list(company, "PUBLISHED", search, PageRequest.of(page, size, Sort.by("publishedTime").descending()));
+            Page<Post> response = this.postService.list(company, "PUBLISHED", search,category, PageRequest.of(page, size, Sort.by("publishedTime").descending()));
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             Logger.getLogger(ExternalResource.class.getName()).log(Level.SEVERE, "[getPost]", e);
@@ -191,6 +198,26 @@ public class ExternalResource {
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             Logger.getLogger(TourismResource.class.getName()).log(Level.SEVERE, "[getTourism]", e);
+            return ResponseEntity.status(HttpStatus.resolve(500)).body(e.getMessage());
+        }
+    }
+    
+    
+    @RequestMapping(value = "/city", method = RequestMethod.GET)
+    @ApiOperation(value = "List", notes = "List all tourism")
+    @ApiResponses(value = {
+        @ApiResponse(response = Tourism.class, code = 200, message = "Ok", responseContainer = "List")
+        ,
+        @ApiResponse(code = 500, message = "Error on Server")
+    })
+    public ResponseEntity getCity() {
+
+        try {
+
+            List<City> response = Arrays.asList(this.cityService.findById(1905L));
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            Logger.getLogger(TourismResource.class.getName()).log(Level.SEVERE, "[getCity]", e);
             return ResponseEntity.status(HttpStatus.resolve(500)).body(e.getMessage());
         }
     }

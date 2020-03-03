@@ -30,5 +30,9 @@ public class PostSpecification {
     public static Specification<Post> key(String key) {
         return (root, criteriaQuery, criteriaBuilder) -> criteriaBuilder.like(root.get(Post_.key), "%" + key + "%");
     }
+    
+     public static Specification<Post> category(Long category) {
+        return (root, criteriaQuery, criteriaBuilder) -> criteriaBuilder.equal(root.get(Post_.category), category);
+    }
 
 }

@@ -61,10 +61,14 @@ public class PostService {
     }
 
     @Transactional(readOnly = true)
-    public Page list(Long company, String status, String search, Pageable page) {
+    public Page list(Long company, String status, String search,Long category, Pageable page) {
 
         
          List<Specification<Post>> predicatives = new ArrayList<>();
+         
+         if (Optional.ofNullable(category).isPresent()) {
+            predicatives.add(PostSpecification.category(category));
+        }
 
         if (Optional.ofNullable(company).isPresent()) {
             predicatives.add(PostSpecification.company(company));
@@ -74,6 +78,8 @@ public class PostService {
             Post.PostStatus ps = Post.PostStatus.valueOf(status);
             predicatives.add(PostSpecification.status(ps));
         } 
+        
+        
         
          if (Optional.ofNullable(search).isPresent()) {
             

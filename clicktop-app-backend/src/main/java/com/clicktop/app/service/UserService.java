@@ -116,6 +116,10 @@ public class UserService {
         this.repository.delete(user);
 
     }
+    
+    public boolean checkEmail(String email){
+        return this.repository.findByEmail(email).isPresent();
+    }
 
     @Transactional(readOnly = true)
     public Page<User> listBy(Long id, String email, String name, String profile, Pageable page) {

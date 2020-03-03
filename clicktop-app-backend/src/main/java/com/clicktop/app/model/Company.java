@@ -61,6 +61,9 @@ public class Company {
     @Column(name = "address_neighborhood")
     private String addressNeighborhood;
 
+    @Column(name = "formatted_address")
+    private String formatedAddress;
+
     @Column(name = "address_complement")
     private String addressComplement;
 
@@ -108,7 +111,7 @@ public class Company {
     @JoinColumn(name = "id_city")
     private City city;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.REMOVE}, orphanRemoval = true)
     @JoinColumn(name = "id_company")
     private List<Telephone> telephones;
 
@@ -126,24 +129,22 @@ public class Company {
 
     @Column(name = "spotlight")
     private String spotlight;
-    
+
     @Column(name = "consultant")
     private User consultant;
-    
+
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_category")    
+    @JoinColumn(name = "id_category")
     private Category category;
-    
+
     @Column(name = "created_at")
     private LocalDateTime createAt;
 
-    
     @PrePersist
-    public void generateDate(){
+    public void generateDate() {
         this.createAt = LocalDateTime.now();
     }
-    
-    
+
     public void update(Company entity) {
 
         if (Optional.ofNullable(entity.getName()).isPresent() && !entity.getName().equals(this.name)) {
@@ -241,8 +242,14 @@ public class Company {
         if (Optional.ofNullable(entity.getSpotlight()).isPresent() && !entity.getSpotlight().equals(this.spotlight)) {
             this.spotlight = entity.getSpotlight();
         }
-
-       
+        
+        if(Optional.ofNullable(entity.getLongitude()).isPresent() && !entity.getLongitude().equals(this.longitude)) {
+            this.longitude = entity.getLongitude();
+        }
+        
+        if(Optional.ofNullable(entity.getLatitude()).isPresent() && !entity.getLatitude().equals(this.latitude)) {
+            this.latitude = entity.getLongitude();
+        }
 
     }
 

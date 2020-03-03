@@ -102,7 +102,7 @@ public class Post {
     private String companyName;
     
     @Column(name = "categoria", nullable = false)
-    private Long categoria;    
+    private Long category;    
 
     @Column(name = "photo")
     private String photo;
@@ -114,7 +114,7 @@ public class Post {
     private String feedback;
 
     @Column(name = "title")
-    private String title;
+    private String postTitle;
 
     @Column(name = "key_post")
     private String key;
@@ -167,8 +167,8 @@ public class Post {
             this.feedback = post.getFeedback();
         }
 
-        if (Optional.ofNullable(post.getTitle()).isPresent() && !post.getTitle().equals(title)) {
-            this.title = post.getTitle();
+        if (Optional.ofNullable(post.getPostTitle()).isPresent() && !post.getPostTitle().equals(postTitle)) {
+            this.postTitle = post.getPostTitle();
         }
 
         if (Optional.ofNullable(post.getKey()).isPresent() && !post.getKey().equals(key)) {

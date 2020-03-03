@@ -53,6 +53,23 @@ public class UserResource {
             return ResponseEntity.status(HttpStatus.resolve(500)).body(e.getMessage());
         }
     }
+    
+    
+    @RequestMapping(value = "/checkEmail", method = RequestMethod.GET)
+    public ResponseEntity checkEmail(            
+            @RequestParam(name = "email", required = false) String email            
+            ) {
+
+        try {
+
+            boolean response = this.service.checkEmail(email);
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            Logger.getLogger(UserResource.class.getName()).log(Level.SEVERE, "[get]", e);
+            return ResponseEntity.status(HttpStatus.resolve(500)).body(e.getMessage());
+        }
+    }
+    
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity delete(@PathVariable(name = "id")Long id) {
