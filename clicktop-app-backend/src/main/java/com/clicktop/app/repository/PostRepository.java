@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -26,6 +27,9 @@ public interface PostRepository extends JpaRepository<Post, Long>, JpaSpecificat
     PostStatusDTO status();
     @Query(nativeQuery = true)
     PostStatusDTO statusByCompany(@Param("company")Long company);
+    
+    @Modifying
+    void deleteByCompany(Long company);
     
     
     @Query(value = "select * from post where status = 'SCHEDULED' and scheduled_time <= :date", nativeQuery = true)

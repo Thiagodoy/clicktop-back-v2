@@ -105,5 +105,10 @@ public class PostService {
     public List<Post> getPostScheduled(){
         return this.repository.listPostScheduled(LocalDate.now());
     }
+    
+    @Transactional()
+    public void deleteByCompany(Long id){
+        this.repository.deleteByCompany(id);
+    }
 
 }

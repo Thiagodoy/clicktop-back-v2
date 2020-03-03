@@ -43,7 +43,10 @@ public class CompanyService {
     private CompanyRepository repository;
 
     @Autowired
-    private UserService service;
+    private UserService userService;
+    
+    @Autowired
+    private PostService postService;
 
     @Autowired
     private ProfileService profileService;
@@ -91,7 +94,7 @@ public class CompanyService {
         paramenters.put(EMAIL_MESSAGE_KEY, MessageFormat.format(EMAIL_FIRST_ACCESS_CONTENT, company.getName(),company.getEmail(),"Clicktop2020"));
         
         this.emailService.sendEmail(company.getEmail(), paramenters);
-        service.save(user);
+        userService.save(user);
         
         Thread t = new Thread(()->{
             
@@ -117,12 +120,12 @@ public class CompanyService {
         this.repository.save(entity);
 
         if (Optional.ofNullable(request.getEmail()).isPresent() && !request.getEmail().equals(entity.getEmail())) {
-            service.delete(entity.getEmail());
+            userService.delete(entity.getEmail());
             User user = User.createUserDefault();
             user.setEmail(request.getEmail());
             user.setFirstName(request.getName());
             user.setCompany(request.getId());
-            service.save(user);
+            userService.save(user);
         }
     }
 
@@ -131,8 +134,8 @@ public class CompanyService {
 
         Company company = this.findById(id);
 
-        this.service.delete(company.getEmail());
-
+        this.userService.delete(company.getEmail());
+        this.postService.deleteByCompany(company.getId());
         this.repository.deleteById(id);
     }
 
