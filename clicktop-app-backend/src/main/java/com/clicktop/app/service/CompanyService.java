@@ -116,7 +116,7 @@ public class CompanyService {
         entity.update(request);
         this.repository.save(entity);
 
-        if (Optional.ofNullable(request.getEmail()).isPresent() && request.getEmail().equals(entity.getEmail())) {
+        if (Optional.ofNullable(request.getEmail()).isPresent() && !request.getEmail().equals(entity.getEmail())) {
             service.delete(entity.getEmail());
             User user = User.createUserDefault();
             user.setEmail(request.getEmail());

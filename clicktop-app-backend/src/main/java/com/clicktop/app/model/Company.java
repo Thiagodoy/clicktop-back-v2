@@ -5,6 +5,7 @@
  */
 package com.clicktop.app.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -103,7 +104,7 @@ public class Company {
     @Column(name = "point_text")
     private String point_text;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "id_plan")
     private Plan plan;
 
@@ -137,6 +138,7 @@ public class Company {
     @JoinColumn(name = "id_category")
     private Category category;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     @Column(name = "created_at")
     private LocalDateTime createAt;
 
