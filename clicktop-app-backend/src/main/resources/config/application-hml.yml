@@ -35,5 +35,12 @@ email:
     protocol: smtps
     starttls:
            enable: true
-           required: true   
+           required: true  
+           
+
+google:
+    url: https://maps.googleapis.com/maps/api/geocode/json?language=pt-BR
+    key: AIzaSyDWRr-8rg2rCtvQxlpaQNf6AKvDh10aMS4
+    
+admin: alangomes.1996@icloud.com             
 

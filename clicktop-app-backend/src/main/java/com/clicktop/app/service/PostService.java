@@ -60,13 +60,21 @@ public class PostService {
         return this.repository.statusByCompany(company);
     }
 
-    @Transactional(readOnly = true)
-    public Page list(Long company, String status, String search,Long category, Pageable page) {
+    @Transactional
+    public List<Post> getByStatus(String string) {
 
-        
-         List<Specification<Post>> predicatives = new ArrayList<>();
-         
-         if (Optional.ofNullable(category).isPresent()) {
+        Post.PostStatus status = Post.PostStatus.valueOf(string);
+
+        return this.repository.findByStatus(status);
+
+    }
+
+    @Transactional(readOnly = true)
+    public Page list(Long company, String status, String search, Long category, Pageable page) {
+
+        List<Specification<Post>> predicatives = new ArrayList<>();
+
+        if (Optional.ofNullable(category).isPresent()) {
             predicatives.add(PostSpecification.category(category));
         }
 
@@ -77,37 +85,33 @@ public class PostService {
         if (Optional.ofNullable(status).isPresent()) {
             Post.PostStatus ps = Post.PostStatus.valueOf(status);
             predicatives.add(PostSpecification.status(ps));
-        } 
-        
-        
-        
-         if (Optional.ofNullable(search).isPresent()) {
-            
-             PostSpecification.key(search);
-             PostSpecification.companyName(search);
-             Specification<Post> spec = Arrays
-                     .asList(PostSpecification.key(search),PostSpecification.companyName(search))
-                     .stream()
-                     .reduce(Specification::or)
-                     .orElse(null);
-             
+        }
+
+        if (Optional.ofNullable(search).isPresent()) {
+
+            PostSpecification.key(search);
+            PostSpecification.companyName(search);
+            Specification<Post> spec = Arrays
+                    .asList(PostSpecification.key(search), PostSpecification.companyName(search))
+                    .stream()
+                    .reduce(Specification::or)
+                    .orElse(null);
+
             predicatives.add(spec);
         }
-        
-        
 
         Specification<Post> specification = predicatives.stream().reduce(Specification::and).orElse(null);
-        
+
         return this.repository.findAll(specification, page);
     }
-    
+
     @Transactional(readOnly = true)
-    public List<Post> getPostScheduled(){
+    public List<Post> getPostScheduled() {
         return this.repository.listPostScheduled(LocalDate.now());
     }
-    
+
     @Transactional()
-    public void deleteByCompany(Long id){
+    public void deleteByCompany(Long id) {
         this.repository.deleteByCompany(id);
     }
 

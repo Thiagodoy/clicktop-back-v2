@@ -28,6 +28,8 @@ public interface PostRepository extends JpaRepository<Post, Long>, JpaSpecificat
     @Query(nativeQuery = true)
     PostStatusDTO statusByCompany(@Param("company")Long company);
     
+    List<Post> findByStatus(Post.PostStatus status);
+    
     @Modifying
     void deleteByCompany(Long company);
     

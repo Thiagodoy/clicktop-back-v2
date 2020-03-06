@@ -107,7 +107,7 @@ public class ExternalResource {
                 Company response = this.companyService.findById(id);
                 return ResponseEntity.ok(response);
             } else {
-                Page<Company> response = this.companyService.list(name, email, spotlight, planId, type, category, PageRequest.of(page, size));
+                Page<Company> response = this.companyService.list(name, email, spotlight, planId, type, category,null, PageRequest.of(page, size));
                 return ResponseEntity.ok(response);
             }
         } catch (Exception e) {

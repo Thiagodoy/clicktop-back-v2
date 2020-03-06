@@ -9,6 +9,7 @@ import com.clicktop.app.model.Category;
 import com.clicktop.app.model.City;
 import com.clicktop.app.model.Company;
 import com.clicktop.app.model.Plan;
+import com.clicktop.app.model.Post;
 import com.clicktop.app.model.Profile;
 import com.clicktop.app.model.User;
 import com.clicktop.app.repository.CompanyRepository;
@@ -24,6 +25,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javax.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -44,7 +46,7 @@ public class CompanyService {
 
     @Autowired
     private UserService userService;
-    
+
     @Autowired
     private PostService postService;
 
@@ -56,11 +58,10 @@ public class CompanyService {
 
     @Autowired
     private CityService cityService;
-    
+
     @Autowired
     private EmailService emailService;
-    
-    
+
     @Autowired
     private GoogleAddressApiService gaas;
 
@@ -87,28 +88,25 @@ public class CompanyService {
                 .orElseThrow(() -> new Exception("Não foi encontrado nenhum perfil!"));
 
         user.setProfile(profile);
-        
-        
-        Map<String,String>paramenters = new HashMap<>();
+
+        Map<String, String> paramenters = new HashMap<>();
         paramenters.put(EMAIL_SUBJECT_KEY, "Primeiro Acesso");
-        paramenters.put(EMAIL_MESSAGE_KEY, MessageFormat.format(EMAIL_FIRST_ACCESS_CONTENT, company.getName(),company.getEmail(),"Clicktop2020"));
-        
+        paramenters.put(EMAIL_MESSAGE_KEY, MessageFormat.format(EMAIL_FIRST_ACCESS_CONTENT, company.getName(), company.getEmail(), "Clicktop2020"));
+
         this.emailService.sendEmail(company.getEmail(), paramenters);
         userService.save(user);
-        
-        Thread t = new Thread(()->{
-            
+
+        Thread t = new Thread(() -> {
+
             try {
                 gaas.getLocation(company1);
             } catch (MessagingException ex) {
                 Logger.getLogger(CompanyService.class.getName()).log(Level.SEVERE, "[google]", ex);
             }
         });
-        
+
         t.start();
-        
-        
-        
+
     }
 
     @Transactional
@@ -140,7 +138,16 @@ public class CompanyService {
     }
 
     @Transactional(readOnly = true)
-    public Page<Company> list(String name, String email, Long spotlight, Long planId, String type, Long category, Pageable page) throws Exception {
+    public List<Company> findBysStatusPost(String postStatus) {
+
+        List<Long> companysId = postService.getByStatus(postStatus).stream().map(Post::getCompany).collect(Collectors.toList());
+
+        return this.repository.findAllById(companysId);
+
+    }
+
+    @Transactional(readOnly = true)
+    public Page<Company> list(String name, String email, Long spotlight, Long planId, String type, Long category, String postType, Pageable page) throws Exception {
 
         List<Specification<Company>> predicatives = new ArrayList<>();
 
@@ -200,12 +207,10 @@ public class CompanyService {
     public Company findById(Long id) throws Exception {
         return this.repository.findById(id).orElseThrow(() -> new Exception("Nenhuma empresa foi encontrada!"));
     }
-    
-    
-     @Transactional(readOnly = true)
+
+    @Transactional(readOnly = true)
     public Page<Company> findByConsult(User user, Pageable page) throws Exception {
         return this.repository.findByConsultant(user, page);
     }
-    
 
 }
