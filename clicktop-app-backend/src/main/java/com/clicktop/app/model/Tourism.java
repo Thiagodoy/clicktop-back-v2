@@ -77,6 +77,9 @@ public class Tourism {
 
     @Column(name = "history")
     private String history;
+    
+    @Column(name = "category")
+    private Long category;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;

@@ -10,6 +10,7 @@ import com.clicktop.app.model.User;
 import com.clicktop.app.service.CompanyService;
 import com.clicktop.app.utils.Url;
 import io.swagger.annotations.ApiOperation;
+import java.util.List;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -57,11 +58,11 @@ public class CompanyResource {
 
                 User user = (User) principal.getPrincipal();
 
-                //Profile equal COMPANY
-                if (user.getProfile().getId().equals(3L)) {
+                
+                if (user.getProfile().getId().equals(3L)) {         //Profile Company
                     Company response = this.service.findById(user.getCompany());
                     return ResponseEntity.ok(response);
-                }else if (user.getProfile().getId().equals(2L)) { //Profile Consult
+                }else if (user.getProfile().getId().equals(2L)) {  //Profile Consult
                     Page<Company> response = this.service.findByConsult(user, PageRequest.of(page, size));
                     return ResponseEntity.ok(response);
                 }
@@ -71,7 +72,10 @@ public class CompanyResource {
             if (id != null) {
                 Company response = this.service.findById(id);
                 return ResponseEntity.ok(response);
-            } else {
+            } else if(postType != null){
+                List<Company> response = this.service.findBysStatusPost(postType);
+                return ResponseEntity.ok(response);
+            }else {
                 Page<Company> response = this.service.list(name, email, spotlight, planId, type, category,null, PageRequest.of(page, size));
                 return ResponseEntity.ok(response);
             }
