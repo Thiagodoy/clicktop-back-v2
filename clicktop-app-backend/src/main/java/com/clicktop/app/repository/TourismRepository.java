@@ -6,6 +6,7 @@
 package com.clicktop.app.repository;
 
 import com.clicktop.app.model.Tourism;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -13,5 +14,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author thiag
  */
 public interface TourismRepository extends JpaRepository<Tourism, Long>{
+    
+    List<Tourism> findByCategory(Long category);
     
 }

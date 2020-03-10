@@ -77,12 +77,15 @@ public class Tourism {
 
     @Column(name = "history")
     private String history;
-    
+
     @Column(name = "category")
     private Long category;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
+
+    @Column(name = "address_number")
+    private Long addressNumber;
 
     @PrePersist
     public void generateDate() {
@@ -141,6 +144,9 @@ public class Tourism {
         }
         if (Optional.ofNullable(request.getHistory()).isPresent() && !request.getHistory().equals(history)) {
             this.history = request.getHistory();
+        }
+        if (Optional.ofNullable(request.getAddressNumber()).isPresent() && !request.getAddressNumber().equals(addressNumber)) {
+            this.addressNumber = request.getAddressNumber();
         }
     }
 

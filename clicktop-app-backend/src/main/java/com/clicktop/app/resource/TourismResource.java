@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import static com.clicktop.app.utils.Url.*;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -41,11 +42,10 @@ public class TourismResource {
         ,
         @ApiResponse(code = 500, message = "Error on Server")
     })
-    public ResponseEntity get() {
+    public ResponseEntity get(@RequestParam(name="category",required = false)Long category) {
 
         try {
-
-            List<Tourism> response = this.service.findAll();
+            List<Tourism> response = this.service.findAll(category);
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             Logger.getLogger(TourismResource.class.getName()).log(Level.SEVERE, "[get]", e);

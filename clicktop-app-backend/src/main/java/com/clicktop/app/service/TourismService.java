@@ -23,8 +23,15 @@ public class TourismService {
     private TourismRepository repository;
 
     @Transactional(readOnly = true)
-    public List<Tourism> findAll() {
-        return this.repository.findAll();
+    public List<Tourism> findAll(Long category) {
+        
+        if(category != null){
+            return this.repository.findByCategory(category);
+        }else{
+            return this.repository.findAll();
+        }
+        
+        
     }
 
     @Transactional

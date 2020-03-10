@@ -8,6 +8,7 @@ package com.clicktop.app.service;
 import com.clicktop.app.model.Profile;
 import com.clicktop.app.model.User;
 import com.clicktop.app.repository.UserRepository;
+import com.clicktop.app.request.UserPhoto;
 import com.clicktop.app.request.UserRequest;
 import com.clicktop.app.specification.UserSpecification;
 
@@ -55,7 +56,7 @@ public class UserService {
         boolean exists = this.repository.findByEmail(request.getEmail()).isPresent();
         
         if(exists){
-            throw new Exception("Já esse email : " + request.getEmail() + " cadastrado em nossa base!");
+            throw new Exception("Email : " + request.getEmail() + " já esta cadastrado em nossa base!");
         }
         
         Map<String,String>paramenters = new HashMap<>();
@@ -85,6 +86,8 @@ public class UserService {
         
     }
 
+    
+    
     @Transactional
     public void update(UserRequest request) throws Exception {
 
@@ -97,6 +100,22 @@ public class UserService {
         if (!request.getProfile().equals(user.getProfile().getId())) {
             Profile profile = profileService.getById(request.getProfile());
             user.setProfile(profile);
+        }
+
+        this.repository.save(user);
+    }
+    
+    @Transactional
+    public void updatePhoto(UserPhoto request) throws Exception {
+
+        User user = this.repository
+                .findById(request.getId())
+                .orElseThrow(() -> new Exception("Não foi possivel localizar o usuário!"));
+
+        
+
+        if (!request.getPhoto().equals(user.getPhoto())) {
+            user.setPhoto(request.getPhoto());
         }
 
         this.repository.save(user);

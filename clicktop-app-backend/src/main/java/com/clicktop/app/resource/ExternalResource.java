@@ -190,11 +190,11 @@ public class ExternalResource {
         ,
         @ApiResponse(code = 500, message = "Error on Server")
     })
-    public ResponseEntity getTourism() {
+    public ResponseEntity getTourism(@RequestParam(name = "category", required = false)Long category) {
 
         try {
 
-            List<Tourism> response = this.tourismService.findAll();
+            List<Tourism> response = this.tourismService.findAll(category);
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             Logger.getLogger(TourismResource.class.getName()).log(Level.SEVERE, "[getTourism]", e);

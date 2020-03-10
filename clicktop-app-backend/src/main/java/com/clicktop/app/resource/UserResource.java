@@ -6,6 +6,7 @@
 package com.clicktop.app.resource;
 
 import com.clicktop.app.model.User;
+import com.clicktop.app.request.UserPhoto;
 import com.clicktop.app.request.UserRequest;
 import com.clicktop.app.service.UserService;
 import com.clicktop.app.utils.Url;
@@ -97,6 +98,17 @@ public class UserResource {
     public ResponseEntity put(@RequestBody UserRequest request) {
         try {
             this.service.update(request);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            Logger.getLogger(UserResource.class.getName()).log(Level.SEVERE, "[put]", e);
+            return ResponseEntity.status(HttpStatus.resolve(500)).body(e.getMessage());
+        }
+    }
+    
+    @RequestMapping(value = "/photo", method = RequestMethod.PUT)
+    public ResponseEntity put(@RequestBody UserPhoto request) {
+        try {
+            this.service.updatePhoto(request);
             return ResponseEntity.ok().build();
         } catch (Exception e) {
             Logger.getLogger(UserResource.class.getName()).log(Level.SEVERE, "[put]", e);
